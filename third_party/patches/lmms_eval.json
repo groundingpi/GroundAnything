@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "scope": "selected-source-export",
+  "base": {
+    "repository": "https://github.com/EvolvingLMMs-Lab/lmms-eval",
+    "ref": "v0.5",
+    "commit": "8f142bc3082100dbb39aa9b15916c586f3237d09",
+    "archive_url": "https://codeload.github.com/EvolvingLMMs-Lab/lmms-eval/tar.gz/8f142bc3082100dbb39aa9b15916c586f3237d09",
+    "archive_sha256": "3ea782da80ac1f1752b603565dab3f78e9116d59e560680a9be124ac083bbbd5",
+    "relationship": "public comparison base; exact ancestry is not asserted"
+  },
+  "source_prefix": "",
+  "path_overrides": {
+    "LICENSE": "LICENSE"
+  },
+  "operations": {
+    "LICENSE": {
+      "op": "replace",
+      "base_sha256": "4faf5345789324d9a4aeea8f963c67ab040b75fa80035eda238749f30338f47f"
+    },
+    "NOTICE.release": {
+      "op": "add"
+    },
+    "README.md": {
+      "op": "replace",
+      "base_sha256": "049f000188da73355e5a21645d79711fedc466b12e3c214aa7892e94e50d6632"
+    },
+    "lmms_eval/api/data_root.py": {
+      "op": "add"
+    },
+    "lmms_eval/api/model.py": {
+      "op": "replace",
+      "base_sha256": "60c2291e2bd3b30345a2601b1b9b113ba28ede8a2d2d35635b963edcf7b950ce"
+    },
+    "lmms_eval/api/task.py": {
+      "op": "replace",
+      "base_sha256": "05e85177b34c02e43c5c2ed1febea8199cae1a10b4f9352849ab4414d89ade5f"
+    },
+    "lmms_eval/evaluator.py": {
+      "op": "replace",
+      "base_sha256": "c2cb4c0d815b45e9494459242b3e3c5ea52742da46efa5826772549bc85b75d4"
+    },
+    "lmms_eval/evaluator_utils.py": {
+      "op": "replace",
+      "base_sha256": "6cd59c3c280ac803e3e0eb1fd39327c38ba121acfe3e1d68020a67b0de1b270e"
+    },
+    "lmms_eval/llm_judge/prompt.py": {
+      "op": "replace",
+      "base_sha256": "1403056dccd5b8e70772024fb3a69b470343aac38db942b8bd9c8a541999e780"
+    },
+    "lmms_eval/llm_judge/providers/async_openai.py": {
+      "op": "replace",
+      "base_sha256": "b236a59fc1a29ed86ba6a3cc15aa82c02e2be42267fa33a424cbc231aff0d48e"
+    },
+    "lmms_eval/llm_judge/providers/openai.py": {
+      "op": "replace",
+      "base_sha256": "b4f92b7d8c47c08aa86e237f033afe02c5cf7d9183d4a8e07873a8659b16f42d"
+    },
+    "lmms_eval/llm_judge/utils.py": {
+      "op": "replace",
+      "base_sha256": "e4123d930062d40bdc830592aa7992d31ac250821f57b0a4a3d21b9655103ea0"
+    },
+    "lmms_eval/loggers/evaluation_tracker.py": {
+      "op": "replace",
+      "base_sha256": "611d0d5b1201701749f4f7df4d9c6c47d843d03f887309c2fd5b5c2dfd4fab11"
+    },
+    "lmms_eval/mcp/client.py": {
+      "op": "replace",
+      "base_sha256": "af42373745a7f42d51bcb2e32d9f678132b548e82074b2ca8e0acd11e967f5b5"
+    },
+    "lmms_eval/models/__init__.py": {
+      "op": "replace",
+      "base_sha256": "396c510328e085230619abe0a2d8a64269b713466281bce18f43e21c29566f3b"
+    },
+    "lmms_eval/models/chat/async_openai.py": {
+      "op": "replace",
+      "base_sha256": "7c2a295bda98de61cb0b988b9ee1af87ecee7e00667a55fe8ab61aba3fba1635"
+    },
+    "lmms_eval/models/chat/generation_contract.py": {
+      "op": "add"
+    },
+    "lmms_eval/models/simple/openai_compatible.py": {
+      "op": "replace",
+      "base_sha256": "a660ceece2470397ec8a0aef23516a32aae960ce2af46d0469c2395c97915ed1"
+    },
+    "lmms_eval/protocol.py": {
+      "op": "replace",
+      "base_sha256": "75d87d2c0d0dfdbb32a317988a0827aaa0df0ba40320a3437c4ebe74bc8ee9a3"
+    },
+    "lmms_eval/tasks/_task_utils/gpt_eval_utils.py": {
+      "op": "replace",
+      "base_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "lmms_eval/tasks/_task_utils/mcq_extract.py": {
+      "op": "add"
+    },
+    "pyproject.toml": {
+      "op": "replace",
+      "base_sha256": "8bf5423b920c6fb56c54a89bdef14de78d5285f4c4a47921ed156ffe17577c0b"
+    }
+  },
+  "replacement_source": "third_party/lmms_eval.tar.gz",
+  "selection": "manifest dependencies entry files; unselected upstream files are omitted"
+}

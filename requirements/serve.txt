@@ -1,0 +1,8 @@
+# Direct dependencies and required compatibility versions.
+PyYAML>=6,<7
+torch==2.9.1
+transformers==5.5.4
+triton==3.5.1
+sgl-kernel==0.3.20
+flashinfer-python==0.5.3
+flashinfer-cubin==0.5.3

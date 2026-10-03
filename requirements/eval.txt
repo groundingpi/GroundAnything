@@ -1,0 +1,16 @@
+# Direct dependencies and required compatibility versions.
+pycocotools
+shapely
+scipy
+rapidfuzz
+editdistance
+torch @ https://download.pytorch.org/whl/cpu/torch-2.5.1%2Bcpu-cp312-cp312-linux_x86_64.whl
+torchvision @ https://download.pytorch.org/whl/cpu/torchvision-0.20.1%2Bcpu-cp312-cp312-linux_x86_64.whl
+datasets>=2.19,<4
+numpy==1.26.4
+transformers>=4.39.2,<5
+opencv-python-headless<4.12
+# lmms-eval metrics must stay compatible with Transformers 4.
+sentence-transformers==5.1.2
+# The bundled client uses the httpx 0.23 API required by lmms-eval.
+openai>=1,<3

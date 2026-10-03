@@ -1,0 +1,1492 @@
+{
+  "schema_version": 1,
+  "scope": "selected-source-export",
+  "base": {
+    "repository": "https://github.com/sgl-project/sglang",
+    "ref": "v0.5.6.post2",
+    "commit": "5c8bd8b51b53b9b39eb1edec582ee43b21002106",
+    "archive_url": "https://codeload.github.com/sgl-project/sglang/tar.gz/5c8bd8b51b53b9b39eb1edec582ee43b21002106",
+    "archive_sha256": "accb4dadd726ca9761ff72071b9ecb52d9baf8b5a2b6cb139eca209fd5dc23f5",
+    "relationship": "public comparison base; exact ancestry is not asserted"
+  },
+  "source_prefix": "python/",
+  "path_overrides": {
+    "LICENSE": "LICENSE"
+  },
+  "operations": {
+    "NOTICE.release": {
+      "op": "add"
+    },
+    "README.md": {
+      "op": "add"
+    },
+    "pyproject.toml": {
+      "op": "replace",
+      "base_sha256": "dcf37c476b9d44dbb06f656b5269d9c462a522c04b98006fcd9794430d89c320"
+    },
+    "sglang/bench_one_batch.py": {
+      "op": "replace",
+      "base_sha256": "378b70178bc6414c9893beab4b5d5fe7bb3df9730c61e43c3a2dae3684e4f7b3"
+    },
+    "sglang/bench_one_batch_server.py": {
+      "op": "replace",
+      "base_sha256": "da0bfd2b5f5a8e4020efabde6fb5ed174246dc4dff5bef886256cdd74602da91"
+    },
+    "sglang/bench_serving.py": {
+      "op": "replace",
+      "base_sha256": "1affd5ef0f5df27e13f7276645203462dbc365f701b738ebf7f59fd12603432c"
+    },
+    "sglang/compile_deep_gemm.py": {
+      "op": "replace",
+      "base_sha256": "12a3fb14d5d244afa8ca0b514a0990076e099798faeace013ec7928cba57029d"
+    },
+    "sglang/jit_kernel/__main__.py": {
+      "op": "add"
+    },
+    "sglang/jit_kernel/add_constant.py": {
+      "op": "add"
+    },
+    "sglang/jit_kernel/csrc/add_constant.cuh": {
+      "op": "add"
+    },
+    "sglang/jit_kernel/csrc/hicache.cuh": {
+      "op": "replace",
+      "base_sha256": "b5e9681da76ae176ab37ba7f1c0023ff8435d1c9070ee714e558dcb4287f677a"
+    },
+    "sglang/jit_kernel/csrc/test_utils.h": {
+      "op": "add"
+    },
+    "sglang/jit_kernel/hicache.py": {
+      "op": "replace",
+      "base_sha256": "3228439381a5e259d2b7f83792a5fa14493721d5fa558aeeb4f30c391e82cd03"
+    },
+    "sglang/jit_kernel/include/sgl_kernel/tensor.h": {
+      "op": "replace",
+      "base_sha256": "e08c0baa5dae748a0e27b4102f134a05b78b16f65db919458fdc0dec8f47d37a"
+    },
+    "sglang/jit_kernel/include/sgl_kernel/utils.cuh": {
+      "op": "replace",
+      "base_sha256": "421f40a1c9266a4a4427ce21a207c4a281dbf66c9eea87c1daaaba113f5ad7f1"
+    },
+    "sglang/jit_kernel/include/sgl_kernel/utils.h": {
+      "op": "replace",
+      "base_sha256": "b2960bc3d3752024523dd224e2c58bf06413c2fbf04a3484b91f217d12fb0e14"
+    },
+    "sglang/jit_kernel/test_add_constant.py": {
+      "op": "add"
+    },
+    "sglang/jit_kernel/utils.py": {
+      "op": "replace",
+      "base_sha256": "f2dbaeaad4972d1f11fa87c080e86e53042dc32f3aeabf251e111c001d600e24"
+    },
+    "sglang/lang/backend/runtime_endpoint.py": {
+      "op": "replace",
+      "base_sha256": "51944aa90f1e13f375d688aff6b5621774c736adb503fba2a3437406df4c698f"
+    },
+    "sglang/launch_server.py": {
+      "op": "replace",
+      "base_sha256": "2c731de4c41edadf059340e3847f293d8f3c10d56f55c3eba9ce4efa05000bff"
+    },
+    "sglang/multimodal_gen/README.md": {
+      "op": "replace",
+      "base_sha256": "1cc19595fad82fbc352e8bc78839911d8bbc632a16ceb7ad6cf173f077220aad"
+    },
+    "sglang/multimodal_gen/apps/webui/README.md": {
+      "op": "add"
+    },
+    "sglang/multimodal_gen/apps/webui/__init__.py": {
+      "op": "add"
+    },
+    "sglang/multimodal_gen/apps/webui/main.py": {
+      "op": "add"
+    },
+    "sglang/multimodal_gen/benchmarks/bench_serving.py": {
+      "op": "add"
+    },
+    "sglang/multimodal_gen/configs/models/dits/base.py": {
+      "op": "replace",
+      "base_sha256": "719bd13f65a3e2b4e986d1c25b55c9e306fceeea76579f68970d0b53f4a24e95"
+    },
+    "sglang/multimodal_gen/configs/models/dits/flux.py": {
+      "op": "replace",
+      "base_sha256": "5b1d1abfab0d5792e2769bfb220817ad73582c1825c0343edb54afba663f129b"
+    },
+    "sglang/multimodal_gen/configs/models/dits/qwenimage.py": {
+      "op": "replace",
+      "base_sha256": "db2bde106e75cb158cfa86878f8f1a930550c0a0b723dd5ecc70c8e2ee6dab68"
+    },
+    "sglang/multimodal_gen/configs/models/dits/zimage.py": {
+      "op": "replace",
+      "base_sha256": "d76fdbce1afe5bf808f9c17ad9fccd90c4352586206625664860dcc0a4e9849d"
+    },
+    "sglang/multimodal_gen/configs/models/encoders/base.py": {
+      "op": "replace",
+      "base_sha256": "e3ec15f0db55c8d2fb621081b4db0c42025240ab662cdb8a78a29e46c93b8e93"
+    },
+    "sglang/multimodal_gen/configs/pipeline_configs/base.py": {
+      "op": "replace",
+      "base_sha256": "f540203e900d432dedbc0823a0f95abe88b8bfeb1ea810dcdeed5bc2f16b41b6"
+    },
+    "sglang/multimodal_gen/configs/pipeline_configs/flux.py": {
+      "op": "replace",
+      "base_sha256": "5c579566332a403acddc20f6fa39c82933ff27818e933147701f94e7f27d9272"
+    },
+    "sglang/multimodal_gen/configs/pipeline_configs/qwen_image.py": {
+      "op": "replace",
+      "base_sha256": "0501e5af3a45fed93903d8d5ca28457127b797c024b00f50d0a046d0b0c5cc04"
+    },
+    "sglang/multimodal_gen/configs/sample/hunyuan.py": {
+      "op": "replace",
+      "base_sha256": "5f45095e6dcee1d3365f1db578f28bdb031dd356d8633b22ba1835e758debd71"
+    },
+    "sglang/multimodal_gen/configs/sample/qwenimage.py": {
+      "op": "replace",
+      "base_sha256": "8498fe7401733dc8add88361268573510036dcbf1c971fb6836e7badbc2d8112"
+    },
+    "sglang/multimodal_gen/configs/sample/sampling_params.py": {
+      "op": "replace",
+      "base_sha256": "299a79635081241d8a07adf22824238bd3d01a11948a53f297365b2c4cc6d8fa"
+    },
+    "sglang/multimodal_gen/configs/sample/stepvideo.py": {
+      "op": "replace",
+      "base_sha256": "b581904ebe1e928d0409f00f2c393b7060a2778f8ae408b19c88aca7f0ef9892"
+    },
+    "sglang/multimodal_gen/configs/sample/wan.py": {
+      "op": "replace",
+      "base_sha256": "0c1a9dcbb0c34502dc56efd7aacabcc60a2e817bd69eea1383f64c35fa495303"
+    },
+    "sglang/multimodal_gen/docs/attention_backends.md": {
+      "op": "add"
+    },
+    "sglang/multimodal_gen/docs/cli.md": {
+      "op": "replace",
+      "base_sha256": "f3381bb006320cdd7f51e8db66d6d6e32ea0741382dac519d52c998e5a3e608b"
+    },
+    "sglang/multimodal_gen/docs/install.md": {
+      "op": "replace",
+      "base_sha256": "ba1c9d4c1050b22bd0a3b2f6c601c1e23e10be8b91bf61e90fe4396c7604144f"
+    },
+    "sglang/multimodal_gen/docs/install_rocm.md": {
+      "op": "add"
+    },
+    "sglang/multimodal_gen/docs/openai_api.md": {
+      "op": "replace",
+      "base_sha256": "35d79536bd136a0f8397b8e9dd854c907dade9492c749b27d1fecdd0dbc33233"
+    },
+    "sglang/multimodal_gen/docs/profiling.md": {
+      "op": "add"
+    },
+    "sglang/multimodal_gen/envs.py": {
+      "op": "replace",
+      "base_sha256": "9a0e0da87552844eade48461c1e8a2f2c40cb2e3e22337cc87bea0f4d7e80e53"
+    },
+    "sglang/multimodal_gen/registry.py": {
+      "op": "replace",
+      "base_sha256": "89f3f209dccb10d1fa5581a637865213315eb1d01dde9e483bfb3e22e8120fe9"
+    },
+    "sglang/multimodal_gen/runtime/distributed/parallel_state.py": {
+      "op": "replace",
+      "base_sha256": "5b3d55943090d6ac36bf9bcb3a9b1e09d9b5eca635d08bac9ad0c98382ca1e86"
+    },
+    "sglang/multimodal_gen/runtime/distributed/yunchang.py": {
+      "op": "add"
+    },
+    "sglang/multimodal_gen/runtime/entrypoints/__init__.py": {
+      "op": "replace",
+      "base_sha256": "a64a76d0d7c09a849e42795211f1156bff40d3e5b973a7e6255f321cf3162ff1"
+    },
+    "sglang/multimodal_gen/runtime/entrypoints/cli/generate.py": {
+      "op": "replace",
+      "base_sha256": "420bc2b94d7c7668fddc1e7365c079f15e9742febae5f637d57918215bbfb03e"
+    },
+    "sglang/multimodal_gen/runtime/entrypoints/cli/serve.py": {
+      "op": "replace",
+      "base_sha256": "397495bc4936b60cb6b0ba3a5bf04a246dbb59a4b8202e74d8ade0f927c83b82"
+    },
+    "sglang/multimodal_gen/runtime/entrypoints/diffusion_generator.py": {
+      "op": "replace",
+      "base_sha256": "934aa0c80e389af90fdb9b8e930977b1d4a385d78da577710045f17a8be1f052"
+    },
+    "sglang/multimodal_gen/runtime/entrypoints/http_server.py": {
+      "op": "replace",
+      "base_sha256": "c8c0d9e2a7eb10420e02951c3e707ac24f67b7586e445fc45b458f1495c5dc04"
+    },
+    "sglang/multimodal_gen/runtime/entrypoints/openai/common_api.py": {
+      "op": "replace",
+      "base_sha256": "75b47ae0b484a4845b509b0a53a1510c8d18a6533a3f37c1e1ba12ccdcb42c26"
+    },
+    "sglang/multimodal_gen/runtime/entrypoints/openai/image_api.py": {
+      "op": "replace",
+      "base_sha256": "180ebaa0d7473414292111f42361acdb508b12f6c24604c0bb6fc400b38c318c"
+    },
+    "sglang/multimodal_gen/runtime/entrypoints/openai/protocol.py": {
+      "op": "replace",
+      "base_sha256": "b1cd42c3e0640dbbeeec2471f26217ce9bc7a749b65b06c1e65fbc92861eeb12"
+    },
+    "sglang/multimodal_gen/runtime/entrypoints/openai/utils.py": {
+      "op": "replace",
+      "base_sha256": "a54de2dd136797cca66f7345f87dbd1b657fc052bd028af1f3f0bc3b6f3fbc3c"
+    },
+    "sglang/multimodal_gen/runtime/entrypoints/openai/video_api.py": {
+      "op": "replace",
+      "base_sha256": "a073de08ba46d772ec90bf29b51094adbf49150e7e82eddc220048d706b5f528"
+    },
+    "sglang/multimodal_gen/runtime/entrypoints/utils.py": {
+      "op": "replace",
+      "base_sha256": "6bd6a82c7629c8351d99dc91848e0bea771b00c5291898e27277123bab7952f5"
+    },
+    "sglang/multimodal_gen/runtime/launch_server.py": {
+      "op": "replace",
+      "base_sha256": "f8fe06e014f090fde4c7a25fac96f8eb94140f9ebd783b7cc9b7ef2f7e5f89c6"
+    },
+    "sglang/multimodal_gen/runtime/layers/activation.py": {
+      "op": "replace",
+      "base_sha256": "f75680d93412dcf2fb45676b6196bfd62286738931fb3ed95bb42ce080528326"
+    },
+    "sglang/multimodal_gen/runtime/layers/attention/backends/aiter.py": {
+      "op": "replace",
+      "base_sha256": "02ff03e7145ca16cd5636478778af36fa4055846595761b01704ead8ec095914"
+    },
+    "sglang/multimodal_gen/runtime/layers/attention/selector.py": {
+      "op": "replace",
+      "base_sha256": "350ad5351b420d03dc1bb226bf6795865605487f18e0a564e21ad89a76b9f02e"
+    },
+    "sglang/multimodal_gen/runtime/layers/custom_op.py": {
+      "op": "replace",
+      "base_sha256": "a97fd4cce650863d50435f527c6e69574ce36b448e4b97cb24b2aedfa5a53926"
+    },
+    "sglang/multimodal_gen/runtime/layers/layernorm.py": {
+      "op": "replace",
+      "base_sha256": "0c491c99563c46150d8e076b2fa1d19bf471ddf74abafd15556bcb1186ccedf2"
+    },
+    "sglang/multimodal_gen/runtime/layers/lora/linear.py": {
+      "op": "replace",
+      "base_sha256": "21caebd5095a78917efe513bd8ad31591b0afbbce6f045659c94c185a9b51c59"
+    },
+    "sglang/multimodal_gen/runtime/layers/usp.py": {
+      "op": "replace",
+      "base_sha256": "a07378e0c4db5171372f9c350bfb75b10aeab7c027436603e28087f0324d7cab"
+    },
+    "sglang/multimodal_gen/runtime/layers/visual_embedding.py": {
+      "op": "replace",
+      "base_sha256": "ecf93cfc92d3de0a5025392265b6d0b182ceacfa199a7569dbddfba65ccc02db"
+    },
+    "sglang/multimodal_gen/runtime/loader/component_loader.py": {
+      "op": "replace",
+      "base_sha256": "351a33c75ef16ae00c8474fe7a116ec75907b88b69450121a8e3eff9ffc211dd"
+    },
+    "sglang/multimodal_gen/runtime/loader/fsdp_load.py": {
+      "op": "replace",
+      "base_sha256": "a6a4b96f0701ec07c3402a03ffdc9da4cccf19a9a16f11aa8d2c9ff1c2729e3e"
+    },
+    "sglang/multimodal_gen/runtime/loader/weight_utils.py": {
+      "op": "replace",
+      "base_sha256": "ea17a7b3aee6b5d626d029702d80a1f0d93a3f473fa0d9c66fa0c9e366f023d2"
+    },
+    "sglang/multimodal_gen/runtime/managers/gpu_worker.py": {
+      "op": "replace",
+      "base_sha256": "11c4b02c93d009f8978cbd471272cb10f0e1990f55937ddaf022ae0eef34283f"
+    },
+    "sglang/multimodal_gen/runtime/managers/scheduler.py": {
+      "op": "replace",
+      "base_sha256": "ead0533b750f9597790c36e0a191f8835e02e7267003423a3acc3926bac08b5e"
+    },
+    "sglang/multimodal_gen/runtime/models/dits/causal_wanvideo.py": {
+      "op": "replace",
+      "base_sha256": "dbb1d1350e8f6add17792d36887f1dbf0f264e7e7536f76ff8d4468652840f15"
+    },
+    "sglang/multimodal_gen/runtime/models/dits/flux.py": {
+      "op": "replace",
+      "base_sha256": "0265bfe76e4b1e82cdb8aa394079fe5073de7f5bfdfcc9872f92b0e5f95fa16b"
+    },
+    "sglang/multimodal_gen/runtime/models/dits/flux_2.py": {
+      "op": "replace",
+      "base_sha256": "22ab4c58664eed9a4f65f71fc46c70a2b5b642ecb89e7222a57e452f99360b61"
+    },
+    "sglang/multimodal_gen/runtime/models/dits/hunyuanvideo.py": {
+      "op": "replace",
+      "base_sha256": "983ec1fbd0bb6f8078abb5eea880d662f14d6cdd6cc39fc9a57b748dd2c0a51d"
+    },
+    "sglang/multimodal_gen/runtime/models/dits/qwen_image.py": {
+      "op": "replace",
+      "base_sha256": "9497238d8ab3114b25a24acba8cb4a3a0a0f0c083182f4033a1e22aad75d66b5"
+    },
+    "sglang/multimodal_gen/runtime/models/dits/stepvideo.py": {
+      "op": "replace",
+      "base_sha256": "5ad394c069ff699b7e3e6bb92c54ef5ab770d1d477d1862b254f21fba0e7762f"
+    },
+    "sglang/multimodal_gen/runtime/models/dits/wanvideo.py": {
+      "op": "replace",
+      "base_sha256": "5b8a9cc691d434efebc17e03ddcc8170e0c561ef7294974eed861e63a79a6214"
+    },
+    "sglang/multimodal_gen/runtime/models/dits/zimage.py": {
+      "op": "replace",
+      "base_sha256": "df17f66c81e027a93c082a4f42a5ada9dc4fc57a387e3489e7034792d9f282bc"
+    },
+    "sglang/multimodal_gen/runtime/models/encoders/qwen2_5vl.py": {
+      "op": "replace",
+      "base_sha256": "ca3d005ef879cd1f8dec52c232d5f25f419f22365b118be6cd8173f3c066a177"
+    },
+    "sglang/multimodal_gen/runtime/models/encoders/stepllm.py": {
+      "op": "replace",
+      "base_sha256": "7fc40e7f717be79baae8184aa45b19c70b8ebfff0cfe9e9bc3c1fd9d31ca31ed"
+    },
+    "sglang/multimodal_gen/runtime/models/encoders/t5.py": {
+      "op": "replace",
+      "base_sha256": "e0027fb29faa050fa16ce1aeb8b6542232449119a2de6d5b6ab4de370a1ca111"
+    },
+    "sglang/multimodal_gen/runtime/models/registry.py": {
+      "op": "replace",
+      "base_sha256": "d47b7633daa2bdfc70eaa93f6c02efa62bd9449a336753b03dce89aade840160"
+    },
+    "sglang/multimodal_gen/runtime/models/schedulers/scheduling_flow_unipc_multistep.py": {
+      "op": "replace",
+      "base_sha256": "50e8534b5664624d825e32ad45c2eb2abe2de93260a3d1110c931c3512528c27"
+    },
+    "sglang/multimodal_gen/runtime/models/vaes/stepvideovae.py": {
+      "op": "replace",
+      "base_sha256": "fbba70c909e7268668ef78b0b04629d74a93a1a166babc768b62f918bc4f3fd1"
+    },
+    "sglang/multimodal_gen/runtime/models/vision_utils.py": {
+      "op": "replace",
+      "base_sha256": "cd0c20b52e49ba155ce84f2ad3dd00a20ed0f0e7cab3cde4fe8c13cea61e04dc"
+    },
+    "sglang/multimodal_gen/runtime/pipelines/qwen_image.py": {
+      "op": "replace",
+      "base_sha256": "7ad1340f6c8bc6ecaaffb50422fd2d47a7e89d7a2b08275fb0a22d13b826772e"
+    },
+    "sglang/multimodal_gen/runtime/pipelines_core/__init__.py": {
+      "op": "replace",
+      "base_sha256": "958a4badde9b1f84354f7471f07ff09161b2832d67af2eed01a2f59781d627f5"
+    },
+    "sglang/multimodal_gen/runtime/pipelines_core/composed_pipeline_base.py": {
+      "op": "replace",
+      "base_sha256": "ff39357c8619897ab486cb6275e57c15682f25c4487f30f3dbb4b5fd294881e2"
+    },
+    "sglang/multimodal_gen/runtime/pipelines_core/lora_format_adapter.py": {
+      "op": "add"
+    },
+    "sglang/multimodal_gen/runtime/pipelines_core/lora_pipeline.py": {
+      "op": "replace",
+      "base_sha256": "5b66fa14926dc8f3e27532a4a0b86c6f062f5bcd52497edd2ebcb133af0aa717"
+    },
+    "sglang/multimodal_gen/runtime/pipelines_core/schedule_batch.py": {
+      "op": "replace",
+      "base_sha256": "c7976b73ed294dbc8f6defff2f7043ad20ef59e8407d4799a10c4657a5be4515"
+    },
+    "sglang/multimodal_gen/runtime/pipelines_core/stages/base.py": {
+      "op": "replace",
+      "base_sha256": "b4f6be46fed623717584b45c948aec473b02514407ea701c951b58db782772e3"
+    },
+    "sglang/multimodal_gen/runtime/pipelines_core/stages/causal_denoising.py": {
+      "op": "replace",
+      "base_sha256": "7c8484bf394292162b70b408e88affda7aab980baaa77d05670bb6ae3c636ebc"
+    },
+    "sglang/multimodal_gen/runtime/pipelines_core/stages/decoding.py": {
+      "op": "replace",
+      "base_sha256": "06e5908e2912215039b857ba9c37fff77bd624a06f18e8685ebfde31e23b177a"
+    },
+    "sglang/multimodal_gen/runtime/pipelines_core/stages/denoising.py": {
+      "op": "replace",
+      "base_sha256": "1b77d7ed97fd1e28c22fa74683cfbbffbfac5df7b0270e4163f3617a84334f49"
+    },
+    "sglang/multimodal_gen/runtime/pipelines_core/stages/denoising_dmd.py": {
+      "op": "replace",
+      "base_sha256": "ace2f3ae9d1869a6b036999e22192c14191682b47edae62bd999cc4502be468d"
+    },
+    "sglang/multimodal_gen/runtime/pipelines_core/stages/encoding.py": {
+      "op": "replace",
+      "base_sha256": "4bce51d4f89bb181e2cd9d593e0f622e97f14f8ba934f5307629fd7a7183f1b9"
+    },
+    "sglang/multimodal_gen/runtime/pipelines_core/stages/image_encoding.py": {
+      "op": "replace",
+      "base_sha256": "9c16c5c189897f03fe605667b2cb640bc05f61780ef27eb9a38d72ac2eab25d7"
+    },
+    "sglang/multimodal_gen/runtime/pipelines_core/stages/input_validation.py": {
+      "op": "replace",
+      "base_sha256": "204da6dc2c03524b82d8592b61398f6fb27432bb34c29e329c046e0dfc4eac65"
+    },
+    "sglang/multimodal_gen/runtime/platforms/cuda.py": {
+      "op": "replace",
+      "base_sha256": "db89ca1fed9eaba2b7a1385526b0dacebcc4b587bbb5ca6cacb8a1fab456221f"
+    },
+    "sglang/multimodal_gen/runtime/platforms/rocm.py": {
+      "op": "replace",
+      "base_sha256": "4c32db8e27e1038f818e79ac42ffd0152154167341478a7a445a34932d3cdf74"
+    },
+    "sglang/multimodal_gen/runtime/scheduler_client.py": {
+      "op": "replace",
+      "base_sha256": "5f181f9ff21a6c29aabdf86b3d7c88a0356727cb03172ce261f291e9c0af8de0"
+    },
+    "sglang/multimodal_gen/runtime/server_args.py": {
+      "op": "replace",
+      "base_sha256": "88290b2006bfba02f12d9800642138ab550f3240b441a97dc3ed203271e9be2b"
+    },
+    "sglang/multimodal_gen/runtime/utils/cache_dit_integration.py": {
+      "op": "replace",
+      "base_sha256": "53ca2103e84444135d1385518c41b040352c75076be8af5237a2f7ae9655f5e3"
+    },
+    "sglang/multimodal_gen/runtime/utils/common.py": {
+      "op": "replace",
+      "base_sha256": "bfcb8ce1b5a92e71453acb0c0b311e683498266ebf8cd730441d8311b9637968"
+    },
+    "sglang/multimodal_gen/runtime/utils/distributed.py": {
+      "op": "replace",
+      "base_sha256": "cf1775b206cc0fb88e8ba9c50e7a25fbb23fc935cfe6a0bc671d16f8a94fc3dc"
+    },
+    "sglang/multimodal_gen/runtime/utils/hf_diffusers_utils.py": {
+      "op": "replace",
+      "base_sha256": "9c72b9b0104fde694c476afd2468b4aa57979c4a5a5f61c6e3f171033b0ee546"
+    },
+    "sglang/multimodal_gen/runtime/utils/layerwise_offload.py": {
+      "op": "add"
+    },
+    "sglang/multimodal_gen/runtime/utils/logging_utils.py": {
+      "op": "replace",
+      "base_sha256": "007cfc3d6e011fc33d7bf0f0620588c4a25bf152746da65189800cbce624531c"
+    },
+    "sglang/multimodal_gen/runtime/utils/perf_logger.py": {
+      "op": "replace",
+      "base_sha256": "a007acdff6741f994a0e30992d435cd60905db32a05ab927400b5e8dbcaee39f"
+    },
+    "sglang/multimodal_gen/runtime/utils/profiler.py": {
+      "op": "replace",
+      "base_sha256": "78574bb8e465013379e1225998ff112d499cceaef5f1c76ee5227c4460cd0107"
+    },
+    "sglang/multimodal_gen/test/cli/test_generate_t2i_perf.py": {
+      "op": "replace",
+      "base_sha256": "c3ebc5c031e7922fb2aa8714930fd408b3804486a22d4bcff8ebd4ee5cd71a47"
+    },
+    "sglang/multimodal_gen/test/run_suite.py": {
+      "op": "replace",
+      "base_sha256": "cfaa9b89208f6cf77e6ec64cf22a207286c3308ea40682669098c154b4eaa781"
+    },
+    "sglang/multimodal_gen/test/server/perf_baselines.json": {
+      "op": "replace",
+      "base_sha256": "4dc3bed77fa7de72f7a1d9bf9ee33c565fbe6e2539ceea25e55fb887977a3742"
+    },
+    "sglang/multimodal_gen/test/server/test_lora_format_adapter.py": {
+      "op": "add"
+    },
+    "sglang/multimodal_gen/test/server/test_server_common.py": {
+      "op": "replace",
+      "base_sha256": "4a429cda8f24a91e456a34258761b8a76f6014e769d09096a25985edc4deb49c"
+    },
+    "sglang/multimodal_gen/test/server/test_server_utils.py": {
+      "op": "replace",
+      "base_sha256": "29ead6092dc9ef509025df51324d4b2e57509497ddd18180c93652685bad3438"
+    },
+    "sglang/multimodal_gen/test/server/testcase_configs.py": {
+      "op": "replace",
+      "base_sha256": "7896a3b5e719c450655387a3ad6e436bd8f07225ff49e847a9f1fbe8dbe5acb0"
+    },
+    "sglang/multimodal_gen/test/slack_utils.py": {
+      "op": "replace",
+      "base_sha256": "34320fd7e28a453aaf0436b15116c56f65a492f9a225d0fbf8f3ce98718c7916"
+    },
+    "sglang/multimodal_gen/utils.py": {
+      "op": "replace",
+      "base_sha256": "94dacde64b979c1e98599d8318b26410b82e169d8cca2e2b75cc192a40cffe23"
+    },
+    "sglang/srt/batch_overlap/operations.py": {
+      "op": "replace",
+      "base_sha256": "004a2840b067cbf434acb8f3e3decf61101117953ef47d92159a83ad92b4787c"
+    },
+    "sglang/srt/batch_overlap/two_batch_overlap.py": {
+      "op": "replace",
+      "base_sha256": "9808744508cc4e508aa57b0d7a2795b00094c6cef95ba65648b95dc1a9229d8b"
+    },
+    "sglang/srt/checkpoint_engine/update.py": {
+      "op": "replace",
+      "base_sha256": "222774bdb2b632b4a9165c9609b445630053da8a549d478f9a4e6d60391901d4"
+    },
+    "sglang/srt/compilation/backend.py": {
+      "op": "replace",
+      "base_sha256": "fdccc42296e21a5e2c319beabcb53207ba651e2ea367c542819ceb9558603d59"
+    },
+    "sglang/srt/compilation/compilation_config.py": {
+      "op": "replace",
+      "base_sha256": "7661a1c33280e7911e05d6c9d4c6527f6775936e30d276a1c6bed71596fff7a5"
+    },
+    "sglang/srt/compilation/piecewise_context_manager.py": {
+      "op": "replace",
+      "base_sha256": "7537bae4474462259340a9f453512fd4f0330b81c6f92d33dd90e09df8abae03"
+    },
+    "sglang/srt/configs/load_config.py": {
+      "op": "replace",
+      "base_sha256": "e258ab0b13d6800e1a026df18a0de6d1f6adbd7eddf8c55985c058f204388c26"
+    },
+    "sglang/srt/configs/model_config.py": {
+      "op": "replace",
+      "base_sha256": "4317a0a46228eff2e68580c62b04effdd4a2a1d5263ec8c3e527c95ccfdd7ff2"
+    },
+    "sglang/srt/constrained/base_grammar_backend.py": {
+      "op": "replace",
+      "base_sha256": "a75623029e72ef81b5420f23640ae0e39795d090e96a038853c258dd42bd4611"
+    },
+    "sglang/srt/constrained/outlines_jump_forward.py": {
+      "op": "replace",
+      "base_sha256": "766dcf56cc31da813f25f02ffad3ddee2acc23de550aae1c653f8017e3a1c77b"
+    },
+    "sglang/srt/constrained/xgrammar_backend.py": {
+      "op": "replace",
+      "base_sha256": "d7c9f2c6524eeb12ca251022aaf71affc87ad9fcc6e3ebf4eaf386480566320b"
+    },
+    "sglang/srt/disaggregation/decode.py": {
+      "op": "replace",
+      "base_sha256": "4a0d94333f81312b75e70ebf942ad148b553b244d8763c017ab852c944ebed14"
+    },
+    "sglang/srt/disaggregation/decode_schedule_batch_mixin.py": {
+      "op": "replace",
+      "base_sha256": "7d18488a057658a06d44917950d6f79cddfc544dc43b69da711bea293c8aed3d"
+    },
+    "sglang/srt/disaggregation/encode_receiver.py": {
+      "op": "add"
+    },
+    "sglang/srt/disaggregation/encode_server.py": {
+      "op": "add"
+    },
+    "sglang/srt/disaggregation/mooncake/conn.py": {
+      "op": "replace",
+      "base_sha256": "1276d688ca80b55696c5430035e6f1becd02b23d4459146a83b9a80138524080"
+    },
+    "sglang/srt/disaggregation/nixl/conn.py": {
+      "op": "replace",
+      "base_sha256": "6af3019a8381a74b26e5c7b14d609033c2f27fe673330a471243bddbae8c7077"
+    },
+    "sglang/srt/disaggregation/prefill.py": {
+      "op": "replace",
+      "base_sha256": "b2af16e5b4da8fe4586b8c2f9dca0e43d6dd06b010dce7f1a4ace58f482ac32c"
+    },
+    "sglang/srt/distributed/device_communicators/custom_all_reduce.py": {
+      "op": "replace",
+      "base_sha256": "b35199dd8971fd0ebd6223362c9b192c288eeaf6d5a6f28e8824d7baeb285d9c"
+    },
+    "sglang/srt/distributed/device_communicators/custom_all_reduce_ops.py": {
+      "op": "replace",
+      "base_sha256": "0046b1603b676c103b8c61169208785772319039815ba920b3dc321811817b51"
+    },
+    "sglang/srt/distributed/parallel_state.py": {
+      "op": "replace",
+      "base_sha256": "d6cff42b8bdb94b6057c4017b8b10db1d335af65caef8a0fa0745c376144dda8"
+    },
+    "sglang/srt/dllm/algorithm/hierarchy_block.py": {
+      "op": "add"
+    },
+    "sglang/srt/dllm/algorithm/low_confidence.py": {
+      "op": "replace",
+      "base_sha256": "e80bf31262a1fafd6809405048ee22685a7303bc3e0e8ee2293c7711da58ff67"
+    },
+    "sglang/srt/dllm/algorithm/speculative_block.py": {
+      "op": "add"
+    },
+    "sglang/srt/dllm/config.py": {
+      "op": "replace",
+      "base_sha256": "864831845fe604e13ee5e552e5fced6e25d88a156196dfa12c2fee02f804b709"
+    },
+    "sglang/srt/entrypoints/engine.py": {
+      "op": "replace",
+      "base_sha256": "644a40af12b85e531c11f599f45a5e8489456e6ce6db76de28bc48e500214045"
+    },
+    "sglang/srt/entrypoints/grpc_server.py": {
+      "op": "replace",
+      "base_sha256": "fe8f372824bb4e3d2853fedfe8fda66d2686432d4d459e0b107baae8e194948a"
+    },
+    "sglang/srt/entrypoints/http_server.py": {
+      "op": "replace",
+      "base_sha256": "d2a94d0cbcd02f621f278b9d0c669f077673452ac489907c27a7271b3d47d773"
+    },
+    "sglang/srt/entrypoints/ollama/README.md": {
+      "op": "add"
+    },
+    "sglang/srt/entrypoints/ollama/__init__.py": {
+      "op": "add"
+    },
+    "sglang/srt/entrypoints/ollama/protocol.py": {
+      "op": "add"
+    },
+    "sglang/srt/entrypoints/ollama/serving.py": {
+      "op": "add"
+    },
+    "sglang/srt/entrypoints/ollama/smart_router.py": {
+      "op": "add"
+    },
+    "sglang/srt/entrypoints/openai/encoding_dsv32.py": {
+      "op": "replace",
+      "base_sha256": "f499654f85782d263c09c4f3d9cb87df05aabc913a83fe49d53c78d4fe331b0e"
+    },
+    "sglang/srt/entrypoints/openai/protocol.py": {
+      "op": "replace",
+      "base_sha256": "06a514a23417a61872af36f8f81ea88cfff1ee05afb838d2caf374595982c59f"
+    },
+    "sglang/srt/entrypoints/openai/serving_base.py": {
+      "op": "replace",
+      "base_sha256": "341b9109803a2657281bf497daedc170e3be95a5044227c5a7f6fafbc9a860e6"
+    },
+    "sglang/srt/entrypoints/openai/serving_chat.py": {
+      "op": "replace",
+      "base_sha256": "062262ee3f1faeaa26bc1a1756cdebecd9e2f602ea66fb6d7c648c4731c85cb3"
+    },
+    "sglang/srt/entrypoints/openai/serving_completions.py": {
+      "op": "replace",
+      "base_sha256": "bfdbf71dac8510063367c6036f5d9714b972db8ae86e3eca95db3be414418203"
+    },
+    "sglang/srt/environ.py": {
+      "op": "replace",
+      "base_sha256": "8c6ffb6871611f4e468e38c7d24b437478f072ca65db871bf658190bb5aa9769"
+    },
+    "sglang/srt/eplb/expert_distribution.py": {
+      "op": "replace",
+      "base_sha256": "76e937a75608d3e7dcac4b9a33203837e7a2fd298a79f5124d04628729bac5f1"
+    },
+    "sglang/srt/function_call/deepseekv32_detector.py": {
+      "op": "replace",
+      "base_sha256": "34320fda77775b5fd5645d93327580448dfc54b8ab3451282a486d595d7b8141"
+    },
+    "sglang/srt/function_call/function_call_parser.py": {
+      "op": "replace",
+      "base_sha256": "886f94bf6703a0cd3494a3341f73d9bced1913fa79aafd4d994533b09985ea02"
+    },
+    "sglang/srt/function_call/glm47_moe_detector.py": {
+      "op": "add"
+    },
+    "sglang/srt/function_call/glm4_moe_detector.py": {
+      "op": "replace",
+      "base_sha256": "f667be5743264e0fc284dd9782aa53e3df560ca764e962a9c9379138d905d75b"
+    },
+    "sglang/srt/function_call/internlm_detector.py": {
+      "op": "add"
+    },
+    "sglang/srt/function_call/llama32_detector.py": {
+      "op": "replace",
+      "base_sha256": "2eb382457a52cbacd7228f35a94e751a863da36188bdac0b4b08b7cf9f9d94e2"
+    },
+    "sglang/srt/function_call/mimo_detector.py": {
+      "op": "add"
+    },
+    "sglang/srt/function_call/minimax_m2.py": {
+      "op": "replace",
+      "base_sha256": "e88b6d7a9a055846654fd40d848a20835c1e16703af43277c129c6a14fb5f397"
+    },
+    "sglang/srt/function_call/mistral_detector.py": {
+      "op": "replace",
+      "base_sha256": "5507fabb62cf2728cfc6b325de3c2ee1b85580c3118ecd4e4da6f72c928aa3b6"
+    },
+    "sglang/srt/grpc/grpc_request_manager.py": {
+      "op": "replace",
+      "base_sha256": "9c80ac0c5e5c05f682161932e2b7d756b5213df3711c1f6359d1b029758a7001"
+    },
+    "sglang/srt/grpc/scheduler_launcher.py": {
+      "op": "replace",
+      "base_sha256": "699d2e1e9b1edc5c5c78a512c79e51bd72a0be5dcdd4de78614d97e8837b70e6"
+    },
+    "sglang/srt/hardware_backend/npu/attention/ascend_backend.py": {
+      "op": "replace",
+      "base_sha256": "d78d4f8e0927d54b609336307c73b221d5a1193b9d5614f429182c925f85f6e9"
+    },
+    "sglang/srt/hardware_backend/npu/attention/mla_preprocess.py": {
+      "op": "replace",
+      "base_sha256": "cef50c2931e544b25a3b022ee35b6e4ea9e06d88643695d02cf90ed490923df4"
+    },
+    "sglang/srt/hardware_backend/npu/graph_runner/eagle_draft_extend_npu_graph_runner.py": {
+      "op": "replace",
+      "base_sha256": "3c0836e9216e568064c84f2c98f52bcfa24f318a4b46a40246ec45717bae1954"
+    },
+    "sglang/srt/hardware_backend/npu/graph_runner/eagle_draft_npu_graph_runner.py": {
+      "op": "replace",
+      "base_sha256": "a33503d979b7059733325cbc18f6070e3f4d37c4d09b5a009689c9d6f6028043"
+    },
+    "sglang/srt/hardware_backend/npu/graph_runner/npu_graph_runner.py": {
+      "op": "replace",
+      "base_sha256": "c374cfbf943ad40ff4555d5671bce6ff3afd12c71493f536f8a2a931f6551ec6"
+    },
+    "sglang/srt/hardware_backend/npu/memory_pool_npu.py": {
+      "op": "replace",
+      "base_sha256": "2f92cf6fd285f8ee9fb63eb2e1bb939dca25b723dd949bca13ba02474ab6d5e2"
+    },
+    "sglang/srt/hardware_backend/npu/modules/deepseek_v2_attention_mla_npu.py": {
+      "op": "replace",
+      "base_sha256": "b517ab32e3db34c058daeca7e42e579b840b3707ec7360202894ad8f59280d08"
+    },
+    "sglang/srt/hardware_backend/npu/moe/topk.py": {
+      "op": "replace",
+      "base_sha256": "162d53ffc94730585c894bd404a5e8fdb7fb82743e37d7eb22bc1ad6b7bea8bd"
+    },
+    "sglang/srt/hardware_backend/npu/quantization/fused_moe_method_npu.py": {
+      "op": "replace",
+      "base_sha256": "fae9ac3619ad6833504990f04902f744c46a2aec4d6b4df51f1dd8452d5c68c5"
+    },
+    "sglang/srt/hardware_backend/npu/quantization/modelslim.py": {
+      "op": "replace",
+      "base_sha256": "4027a9203b5f53acfc103239fa70a8a199b2c6e5666a0ff5e3098de270fcbcd5"
+    },
+    "sglang/srt/hardware_backend/npu/utils.py": {
+      "op": "replace",
+      "base_sha256": "f8cf91132ec608fd81ae69dddece5957a12cabdd9b634a0f6c983df14342a18b"
+    },
+    "sglang/srt/layers/attention/aiter_backend.py": {
+      "op": "replace",
+      "base_sha256": "6a04289e30cc548e35dd8f8f7b9e4f3579ec48d8a872b5fc349a7090935842c3"
+    },
+    "sglang/srt/layers/attention/fla/chunk.py": {
+      "op": "replace",
+      "base_sha256": "afc4dd765ee9d1a7b49c7d05535b14dc4a564ed8a2a5dce88a3693317dff8062"
+    },
+    "sglang/srt/layers/attention/fla/chunk_delta_h.py": {
+      "op": "replace",
+      "base_sha256": "cdb646526f34b5be13c9d77127f74070873348810398cf40e8e6470330624ee2"
+    },
+    "sglang/srt/layers/attention/fla/fused_recurrent.py": {
+      "op": "replace",
+      "base_sha256": "65d78b9dd1ac75fc10bb7205136e4edf6a672e9d84711921ffdab3165d8b21ab"
+    },
+    "sglang/srt/layers/attention/flashattention_backend.py": {
+      "op": "replace",
+      "base_sha256": "2d9ff706d3801481b72c6143b581bfc3e58f3b7f888da1ca797c9a72c93b7d05"
+    },
+    "sglang/srt/layers/attention/flashinfer_backend.py": {
+      "op": "replace",
+      "base_sha256": "96012ea36d93b487aed27a2803a44c6636b6c9e707e93f82ce55c3f356120222"
+    },
+    "sglang/srt/layers/attention/hybrid_linear_attn_backend.py": {
+      "op": "replace",
+      "base_sha256": "eeb76309efa06264c5bf3c13daeb9b1f0a7be040451212402d12b5860d6dd0c2"
+    },
+    "sglang/srt/layers/attention/mamba/causal_conv1d_triton.py": {
+      "op": "replace",
+      "base_sha256": "14973eeb0a87ee7a2983b3f23e2071b54936e9d9f61b51eaffaeb36497767961"
+    },
+    "sglang/srt/layers/attention/mamba/mamba2_metadata.py": {
+      "op": "replace",
+      "base_sha256": "7f594a102e5d66bb91f0bd47178e77beeafe73c7fa6ae96b72a7437a76958433"
+    },
+    "sglang/srt/layers/attention/nsa/dequant_k_cache.py": {
+      "op": "replace",
+      "base_sha256": "2fbb170550d73810cd8b340362eaae79d610b5c93983d0c4417d922399f8c187"
+    },
+    "sglang/srt/layers/attention/nsa/nsa_backend_mtp_precompute.py": {
+      "op": "add"
+    },
+    "sglang/srt/layers/attention/nsa/nsa_indexer.py": {
+      "op": "replace",
+      "base_sha256": "de1cb8278df95215a23eb401e15049b6f11b65eabc608fde7f3147016bfc6011"
+    },
+    "sglang/srt/layers/attention/nsa/utils.py": {
+      "op": "replace",
+      "base_sha256": "ceb087e705a2a3b6705cc796e10dda078fa544292ae2e013abd735ef902ba266"
+    },
+    "sglang/srt/layers/attention/nsa_backend.py": {
+      "op": "replace",
+      "base_sha256": "fd6426e3f0d4b039482a985d588d518acc110f5268443e975cd0df90c84bad0a"
+    },
+    "sglang/srt/layers/attention/tbo_backend.py": {
+      "op": "replace",
+      "base_sha256": "05fa60d23f3424b2733988270318b5e19ba36052c8e003e29716085b26b7b1d2"
+    },
+    "sglang/srt/layers/attention/triton_ops/trtllm_fp8_kv_kernel.py": {
+      "op": "add"
+    },
+    "sglang/srt/layers/attention/trtllm_mha_backend.py": {
+      "op": "replace",
+      "base_sha256": "cf092ad67cec76918b3b05070ecca92f6740812dfd149e7740fae3f9e9002484"
+    },
+    "sglang/srt/layers/attention/trtllm_mla_backend.py": {
+      "op": "replace",
+      "base_sha256": "0e9cc79d904ff7b87f418ded2efdea0807e10e12be799c1cda171fe0b6d6a804"
+    },
+    "sglang/srt/layers/attention/utils.py": {
+      "op": "replace",
+      "base_sha256": "2f51650a6816b07fa4f9c71772e4a207d4e3e33edbf9aeca3163d92af097a304"
+    },
+    "sglang/srt/layers/attention/vision.py": {
+      "op": "replace",
+      "base_sha256": "1cc878bf2af6876f8dafcda7b1f3a66bb75a2a6c287f4247e01ca2bccf60ba93"
+    },
+    "sglang/srt/layers/communicator.py": {
+      "op": "replace",
+      "base_sha256": "6493a61b2964d4c04317cee75af98d6163510d52356d21c87df28b9723999ef4"
+    },
+    "sglang/srt/layers/deep_gemm_wrapper/compile_utils.py": {
+      "op": "replace",
+      "base_sha256": "c5ec04e22d2a437f96c200d44483010fe29db7876aafc616637b9e060b740ef5"
+    },
+    "sglang/srt/layers/deep_gemm_wrapper/configurer.py": {
+      "op": "replace",
+      "base_sha256": "be4301359c7746aba412dc4c5006d37ca2628b73035cb06cf37665b20b713625"
+    },
+    "sglang/srt/layers/layernorm.py": {
+      "op": "replace",
+      "base_sha256": "f1ee05f186bc15d1b98ea974b935862eb51ea471963d7f8a48f39c25acc12371"
+    },
+    "sglang/srt/layers/linear.py": {
+      "op": "replace",
+      "base_sha256": "02741a7b491e54c254757f7fd72092ff13369fde8e7f580086092f41ebaa75aa"
+    },
+    "sglang/srt/layers/logits_processor.py": {
+      "op": "replace",
+      "base_sha256": "8c496b709769b32a6972cc922683359ae06198171ca6a636a08762b654909abb"
+    },
+    "sglang/srt/layers/moe/ep_moe/layer.py": {
+      "op": "replace",
+      "base_sha256": "268403b4b9d60fb2a1f2aaff2588b7d42c924b9a3306ca4eacb5f1abe99b5ba7"
+    },
+    "sglang/srt/layers/moe/fused_moe_triton/configs/triton_3_5_1/E=161,N=192,device_name=NVIDIA_B200,dtype=fp8_w8a8,per_channel_quant=True.json": {
+      "op": "add"
+    },
+    "sglang/srt/layers/moe/fused_moe_triton/configs/triton_3_5_1/E=161,N=384,device_name=NVIDIA_B200,dtype=fp8_w8a8,per_channel_quant=True.json": {
+      "op": "add"
+    },
+    "sglang/srt/layers/moe/fused_moe_triton/fused_marlin_moe.py": {
+      "op": "replace",
+      "base_sha256": "a77a74b52ddc9358c0a36fae6474888c7fd4c93a1d371cd1a02f26066f28849d"
+    },
+    "sglang/srt/layers/moe/fused_moe_triton/fused_moe.py": {
+      "op": "replace",
+      "base_sha256": "91c56813d7fdfdab1c1e9f1a4e70504f33d550ce2874ce3df7425a331624bc65"
+    },
+    "sglang/srt/layers/moe/fused_moe_triton/fused_moe_triton_kernels.py": {
+      "op": "replace",
+      "base_sha256": "97975759653c33d735ac549012b87ac5eaee263daa2eaebab09f35d81352b3d4"
+    },
+    "sglang/srt/layers/moe/fused_moe_triton/layer.py": {
+      "op": "replace",
+      "base_sha256": "6063d2f8d4bad75cae908f3d5a885ee2af2cf496a9b96c7a752b527f33106230"
+    },
+    "sglang/srt/layers/moe/fused_moe_triton/moe_align_block_size.py": {
+      "op": "replace",
+      "base_sha256": "9b1ad7b6f1dc8a18a94567c8bcf5fcf8f9a3473211dfcfe0d89361febb8eb7e4"
+    },
+    "sglang/srt/layers/moe/moe_runner/marlin.py": {
+      "op": "replace",
+      "base_sha256": "ef164d694ea85f4f6d020f398ec5e729e466d2bfd5c810ef198b77d844db509a"
+    },
+    "sglang/srt/layers/moe/routed_experts_capturer.py": {
+      "op": "add"
+    },
+    "sglang/srt/layers/moe/topk.py": {
+      "op": "replace",
+      "base_sha256": "70c3c8f1a5a92a132ebc335307c01494f13f3e529d7c28441c613697e7c5a6cc"
+    },
+    "sglang/srt/layers/moe/utils.py": {
+      "op": "replace",
+      "base_sha256": "7c69e129c1580f4a000166e8286e07667e2b80ea6163e7f217caa5fee0198e9d"
+    },
+    "sglang/srt/layers/quantization/base_config.py": {
+      "op": "replace",
+      "base_sha256": "34fed0c88d650aae49c5eacf2034f2f13610a8ec12446ade35e0fe4b27b666eb"
+    },
+    "sglang/srt/layers/quantization/compressed_tensors/compressed_tensors.py": {
+      "op": "replace",
+      "base_sha256": "817722ac1f3bfaf24fd10f915755a57265e6f84a8974d713ad658d4658588d3e"
+    },
+    "sglang/srt/layers/quantization/compressed_tensors/compressed_tensors_moe.py": {
+      "op": "replace",
+      "base_sha256": "8da770f6c4db38fe5d2911618588f78cab3e4dbe19f6b80b7fd700be6bbd28f7"
+    },
+    "sglang/srt/layers/quantization/compressed_tensors/schemes/__init__.py": {
+      "op": "replace",
+      "base_sha256": "aa1c75621307e9dcef9f32d248dd6e403137c031cca0e03f1d19239fa96cbf35"
+    },
+    "sglang/srt/layers/quantization/compressed_tensors/schemes/compressed_tensors_w4a4_nvfp4.py": {
+      "op": "add"
+    },
+    "sglang/srt/layers/quantization/compressed_tensors/schemes/compressed_tensors_w8a8_int8.py": {
+      "op": "replace",
+      "base_sha256": "eaeb0d769afc98be504654cafe9650b46c2099230d8b429d31f9b9ee4ab7970d"
+    },
+    "sglang/srt/layers/quantization/compressed_tensors/utils.py": {
+      "op": "replace",
+      "base_sha256": "9a752629615052763c6d5a051d4b8d570aac7d2f9c79f791fa87f26a28425dc6"
+    },
+    "sglang/srt/layers/quantization/fp8.py": {
+      "op": "replace",
+      "base_sha256": "2c070103aff6cffb8ceb0bb3fd9642d1d0934db4108f438bc1d570d362d0355a"
+    },
+    "sglang/srt/layers/quantization/fp8_utils.py": {
+      "op": "replace",
+      "base_sha256": "2249ad2192f799e02c44f61f621ea6a1bd4a86993b574faef6660a85addf1e43"
+    },
+    "sglang/srt/layers/quantization/gptq.py": {
+      "op": "replace",
+      "base_sha256": "50830551c3ec828e91122051aed3a72e66af70b3dda5c7acb24fb657dbf062fa"
+    },
+    "sglang/srt/layers/quantization/marlin_utils_fp8.py": {
+      "op": "replace",
+      "base_sha256": "8928eafa290f393539a65ad63535b83257ad28bc9222b365e4d850998e85c80a"
+    },
+    "sglang/srt/layers/quantization/modelopt_quant.py": {
+      "op": "replace",
+      "base_sha256": "08c5b752817a1a4f8d296c257bdfbc3f1b4aa29d7852e593906b9a65f1c48bbe"
+    },
+    "sglang/srt/layers/quantization/mxfp4.py": {
+      "op": "replace",
+      "base_sha256": "2c968eb296053209ceb06b11afe42fccd0d50675f3cea79a2b43be065da39c11"
+    },
+    "sglang/srt/layers/quantization/quark/quark_moe.py": {
+      "op": "replace",
+      "base_sha256": "9ffeed9a40b2afefb0b5aa66b21fe30ce31b01bdc36ca270ce1af916a70e04af"
+    },
+    "sglang/srt/layers/quantization/unquant.py": {
+      "op": "replace",
+      "base_sha256": "5ccd7abd9bb75a4ff4cf69588c14a68fdde94fc3f6c71614d3de7b5dbd06bdee"
+    },
+    "sglang/srt/layers/quantization/utils.py": {
+      "op": "replace",
+      "base_sha256": "e676d7e1c2fb6de5c445798403ee90caef54a7801c3fb661c65cb523269857b4"
+    },
+    "sglang/srt/layers/quantization/w4afp8.py": {
+      "op": "replace",
+      "base_sha256": "5499b4ba7236e73edfffa336cb129c46feaf281d411f48f4ede5ae9380886568"
+    },
+    "sglang/srt/layers/quantization/w8a8_fp8.py": {
+      "op": "replace",
+      "base_sha256": "ba02d5e06e0c0e883e52e2ea4a711ab01a84dc787a02a139658237ef579a9fdd"
+    },
+    "sglang/srt/layers/quantization/w8a8_int8.py": {
+      "op": "replace",
+      "base_sha256": "4b82bee8f6f62334f0847e169aee777116ccce8fb4a5a53261bffb37ce217ca7"
+    },
+    "sglang/srt/layers/rotary_embedding.py": {
+      "op": "replace",
+      "base_sha256": "b1ff8b568519de73c06d59335cfc0836cc78fba537878d46dd2049f00dd3ffb3"
+    },
+    "sglang/srt/layers/sampler.py": {
+      "op": "replace",
+      "base_sha256": "29ad1d1ef898f41a606cfbd510a46170dec8cdf68afcf9c529cb50c09ee2460e"
+    },
+    "sglang/srt/layers/utils/__init__.py": {
+      "op": "add"
+    },
+    "sglang/srt/layers/utils/common.py": {
+      "op": "add"
+    },
+    "sglang/srt/layers/utils/logprob.py": {
+      "op": "add"
+    },
+    "sglang/srt/lora/eviction_policy.py": {
+      "op": "replace",
+      "base_sha256": "21a1b5b657213de4f6898c2e68c19d1ee99af75c2b68ed4af6a448168578ca4a"
+    },
+    "sglang/srt/lora/mem_pool.py": {
+      "op": "replace",
+      "base_sha256": "df0ad1fd474f8f36040440eda77243791d93cd934efd288dbc3a2e04217a580c"
+    },
+    "sglang/srt/managers/data_parallel_controller.py": {
+      "op": "replace",
+      "base_sha256": "1df6a8cc89e65648d86b3709228188d898021661bebe441a989c020b078c3e2e"
+    },
+    "sglang/srt/managers/detokenizer_manager.py": {
+      "op": "replace",
+      "base_sha256": "586485481ad5ab5c373eda091befc869a8da652b44426737bff713524ba33615"
+    },
+    "sglang/srt/managers/io_struct.py": {
+      "op": "replace",
+      "base_sha256": "26dcb4f172e63638608674b0f6dd605007d08d508316787d09d8c67ab2484f06"
+    },
+    "sglang/srt/managers/mm_utils.py": {
+      "op": "replace",
+      "base_sha256": "580573d9afd16e2f93d1665e32520420d5e5da0666e076f4121a343c06a65577"
+    },
+    "sglang/srt/managers/multi_tokenizer_mixin.py": {
+      "op": "replace",
+      "base_sha256": "cf4a07f3f30e8833aa8f28edadeb1220adf6dcfe6fef3523fc62b8cab1a763cb"
+    },
+    "sglang/srt/managers/overlap_utils.py": {
+      "op": "replace",
+      "base_sha256": "f8c6ae24c25b3d6a7146f562df911da7f2cd87f5ccea43e2a3f61dde1cb413f3"
+    },
+    "sglang/srt/managers/schedule_batch.py": {
+      "op": "replace",
+      "base_sha256": "1f17a42db810673930d4c08583c32bf8a19d65486c89432d5a0f0c6e5ed23840"
+    },
+    "sglang/srt/managers/schedule_policy.py": {
+      "op": "replace",
+      "base_sha256": "5ed3793c2e380bd58700e473f35afc22e55a4ca474b257648d1717bdc2dfce47"
+    },
+    "sglang/srt/managers/scheduler.py": {
+      "op": "replace",
+      "base_sha256": "d8c820dbaa69776f0494a1f62e4b9cfb3bab167651c7f240cd4241dcdadb6b6c"
+    },
+    "sglang/srt/managers/scheduler_dp_attn_mixin.py": {
+      "op": "replace",
+      "base_sha256": "9394e7544bd9d0f8404564714f955a2c1f8f26fd3f2af282a4a04dc289c26e39"
+    },
+    "sglang/srt/managers/scheduler_enhancer.py": {
+      "op": "add"
+    },
+    "sglang/srt/managers/scheduler_metrics_mixin.py": {
+      "op": "replace",
+      "base_sha256": "3bf016ca6d43a3d954ed2a709fce059f3012072e83076dced09a1f1ef84fe7da"
+    },
+    "sglang/srt/managers/scheduler_output_processor_mixin.py": {
+      "op": "replace",
+      "base_sha256": "309e290e9c91be5b0b5c41b27cc7632e7af9809b221fd426024f4436842f21b4"
+    },
+    "sglang/srt/managers/scheduler_pp_mixin.py": {
+      "op": "replace",
+      "base_sha256": "3e210245404e19ad97e09bbc7f45f6dae34173523b3dc3589d225755e32505c1"
+    },
+    "sglang/srt/managers/scheduler_runtime_checker_mixin.py": {
+      "op": "replace",
+      "base_sha256": "b71643e911abce3407360daf8cf1712fdfe9904c85842261187f305608675abf"
+    },
+    "sglang/srt/managers/tokenizer_communicator_mixin.py": {
+      "op": "replace",
+      "base_sha256": "44e09f2f36a60709cdee1b02607a5e7f17c0cbc82060a95ade2a4703fd589245"
+    },
+    "sglang/srt/managers/tokenizer_manager.py": {
+      "op": "replace",
+      "base_sha256": "9060bd1c48be3d489c4798e26893d8e80264abb0d8181f256e93b996bc60ea99"
+    },
+    "sglang/srt/managers/tp_worker.py": {
+      "op": "replace",
+      "base_sha256": "f091d063ac580b56b07f074ec0b9e79cbfe68747fd9934f4c5e15b9cf19b10e7"
+    },
+    "sglang/srt/managers/utils.py": {
+      "op": "replace",
+      "base_sha256": "a24a237b60817b250ea6768ed8cccc1a9240fbc006c6f728914598e5cca5bbda"
+    },
+    "sglang/srt/mem_cache/allocator.py": {
+      "op": "replace",
+      "base_sha256": "4c40242b7dafc98cfbc28c396e964b96bcdbdca1d55edc3d8752ad19683a908a"
+    },
+    "sglang/srt/mem_cache/cache_init_params.py": {
+      "op": "replace",
+      "base_sha256": "8422207c2699107d0bef3e3f42cae7bc48f94e061c2e9d949e1d064c945630ac"
+    },
+    "sglang/srt/mem_cache/chunk_cache.py": {
+      "op": "replace",
+      "base_sha256": "61d7e3ef6dab2fdda0509edd9b03463ceba8a2f35eb32724118ac862988e56af"
+    },
+    "sglang/srt/mem_cache/common.py": {
+      "op": "replace",
+      "base_sha256": "e82da07bf1a0ac8006fa9b368e51d3723121ba06ff1ffc2c7bf58933d9e71fa3"
+    },
+    "sglang/srt/mem_cache/cpp_radix_tree/.clang-format": {
+      "op": "add"
+    },
+    "sglang/srt/mem_cache/mamba_radix_cache.py": {
+      "op": "replace",
+      "base_sha256": "774ac1cfbbf82f105386364a5acc433a5f7351643fae6564b495582acde32b21"
+    },
+    "sglang/srt/mem_cache/memory_pool.py": {
+      "op": "replace",
+      "base_sha256": "e09e2afe3667c39b3278047562884f2656133da9f66ec9ffacf8094e2a4474d5"
+    },
+    "sglang/srt/mem_cache/radix_cache.py": {
+      "op": "replace",
+      "base_sha256": "57eaf5f263116d872e78907426db68cac3d40484762c27ecf737b95c3bf763f7"
+    },
+    "sglang/srt/mem_cache/storage/hf3fs/docs/README.md": {
+      "op": "replace",
+      "base_sha256": "528e1516836c907cbfceef2467c106f27f0553f527ff6900e4e24c9e38573234"
+    },
+    "sglang/srt/mem_cache/storage/mooncake_store/mooncake_store.py": {
+      "op": "replace",
+      "base_sha256": "8f6c392766c09f7781d4e8ac767d76819f6d75cf174a490117c0baa6d8e4b0ec"
+    },
+    "sglang/srt/mem_cache/swa_radix_cache.py": {
+      "op": "replace",
+      "base_sha256": "d9593b42285aa51181d58dce2b8be47c9e4bcae516bc71e717dab2b8e206b542"
+    },
+    "sglang/srt/metrics/collector.py": {
+      "op": "replace",
+      "base_sha256": "ec5369e56c1592d6b5f309f72af16196de0ac972bf01f9cf6b2505ea34c73654"
+    },
+    "sglang/srt/model_executor/cuda_graph_runner.py": {
+      "op": "replace",
+      "base_sha256": "b812fc8e9188a0907a198b2d81f5bf72e894488a24aa7a473545a9e2d3e41296"
+    },
+    "sglang/srt/model_executor/forward_batch_info.py": {
+      "op": "replace",
+      "base_sha256": "a03fdc0a9296ec6a0d590e79127b9ca114106bb259b16f44b5e8de42a1266bae"
+    },
+    "sglang/srt/model_executor/input_buffers.py": {
+      "op": "replace",
+      "base_sha256": "eb1546dc2f00a9b65f6af938a4f33a75e8e16604e7fcc2a58efdf638ab9b9ace"
+    },
+    "sglang/srt/model_executor/model_runner.py": {
+      "op": "replace",
+      "base_sha256": "a9d0dd392aa99ccddb01e143a567604a41fc8f214f7c99fb2f024aa032eca26a"
+    },
+    "sglang/srt/model_executor/piecewise_cuda_graph_runner.py": {
+      "op": "replace",
+      "base_sha256": "4af9a806c9f64a2e714efea6a07b66e50910abe5952b6ad70145276b4031fa79"
+    },
+    "sglang/srt/model_loader/loader.py": {
+      "op": "replace",
+      "base_sha256": "602e2b3b92e84549a1f7df45d9be200c9f0459fb249fb66f905e29980f30b88f"
+    },
+    "sglang/srt/model_loader/remote_instance_weight_loader_utils.py": {
+      "op": "replace",
+      "base_sha256": "fc79d00f501bf96bfda004ce9b025ee9a41a403fc6b3fc86f44b0308625059fb"
+    },
+    "sglang/srt/model_loader/weight_utils.py": {
+      "op": "replace",
+      "base_sha256": "7bc3336ee810d17641087c6db29f5027f55ce30556895a330e9173270e22095b"
+    },
+    "sglang/srt/models/bailing_moe.py": {
+      "op": "replace",
+      "base_sha256": "2ec4df6062fbc794c718f40f4d1e62f880dc1496698c4467f09e129067197ed5"
+    },
+    "sglang/srt/models/deepseek_nextn.py": {
+      "op": "replace",
+      "base_sha256": "c88184d5dfde1daec0c376eb7dd86ed5cb6b777a392e8852fb97b5547528e4b9"
+    },
+    "sglang/srt/models/deepseek_v2.py": {
+      "op": "replace",
+      "base_sha256": "07aaa454ef64488eda9835d96ec9e437687e1024f8004554547e46a7ed602fbd"
+    },
+    "sglang/srt/models/dots_vlm.py": {
+      "op": "replace",
+      "base_sha256": "4f8d79639c85b7a03203f1cba4860e484346ec6322f0cec85d46bbebd3ca76f5"
+    },
+    "sglang/srt/models/ernie4.py": {
+      "op": "replace",
+      "base_sha256": "df3d782857582d1f09fb3b26f683b5b8151e2e55ab9641e814a118bca2892ca3"
+    },
+    "sglang/srt/models/falcon_h1.py": {
+      "op": "replace",
+      "base_sha256": "51067ce39e1bb63a19d646e4b5aaad2231d8d7176f6946756519d967600f960e"
+    },
+    "sglang/srt/models/fast_dllm_v2.py": {
+      "op": "add"
+    },
+    "sglang/srt/models/fast_dvlm.py": {
+      "op": "add"
+    },
+    "sglang/srt/models/gemma3_causal.py": {
+      "op": "replace",
+      "base_sha256": "a38e8135b6a239ea0ebf6c5553afa559986bae3c86b2475e6ef7b4ff0be259f5"
+    },
+    "sglang/srt/models/gemma3_mm.py": {
+      "op": "replace",
+      "base_sha256": "f49a64363feefbc01ff5124941b50d18ec569af5b74db5d471ea08ea899bf237"
+    },
+    "sglang/srt/models/glm4_moe.py": {
+      "op": "replace",
+      "base_sha256": "71010454debe3d3d6c26a6f1996aaea13b60170aafdbc47b8d395d28843fd63e"
+    },
+    "sglang/srt/models/glm4v.py": {
+      "op": "replace",
+      "base_sha256": "478187fa5dfa35839ca4263b19faf0b1b6993da11e55c717d8816e0f56697d67"
+    },
+    "sglang/srt/models/glmasr.py": {
+      "op": "add"
+    },
+    "sglang/srt/models/gpt_oss.py": {
+      "op": "replace",
+      "base_sha256": "9a70607995a22f162684fd48641db7d0dca5a5dc76174170833be31dd3b4605f"
+    },
+    "sglang/srt/models/grok.py": {
+      "op": "replace",
+      "base_sha256": "171339449096e189174682c38fd22350a666c68f2166c0d4910820d5e5c9ae73"
+    },
+    "sglang/srt/models/hunyuan.py": {
+      "op": "replace",
+      "base_sha256": "8b84541030f0bdf94657a85c8818d34b8e86d747b0d0325c99a52938d931945e"
+    },
+    "sglang/srt/models/kimi_vl.py": {
+      "op": "replace",
+      "base_sha256": "4e6d3e7195f30f714d5ba604a00146a825fb1315b88678be44616c2b718e09c8"
+    },
+    "sglang/srt/models/llada2.py": {
+      "op": "replace",
+      "base_sha256": "a783876893ab44862d709de4cf846d288ea3d72c8518f6fa04257bf00dda7729"
+    },
+    "sglang/srt/models/llama4.py": {
+      "op": "replace",
+      "base_sha256": "007013b0e5b0721bb93824311a6d9d1dc73c3a5500e498661b728bdc4deb9c5e"
+    },
+    "sglang/srt/models/longcat_flash.py": {
+      "op": "replace",
+      "base_sha256": "65ff5f1e4887cd8bd86cb449ada84e3c92c1b23aa6777adeda15032d89acb2af"
+    },
+    "sglang/srt/models/longcat_flash_nextn.py": {
+      "op": "replace",
+      "base_sha256": "19b3fe143c17d39a9abeeaef1a21e1898101780d2ca5c2c8091fef33c904c0b7"
+    },
+    "sglang/srt/models/midashenglm.py": {
+      "op": "add"
+    },
+    "sglang/srt/models/mimo_v2_flash.py": {
+      "op": "add"
+    },
+    "sglang/srt/models/mimo_v2_flash_nextn.py": {
+      "op": "add"
+    },
+    "sglang/srt/models/mindspore.py": {
+      "op": "replace",
+      "base_sha256": "d93a089e64760c2d2bfdedb9930494e419c083091bed061fb77936bfb10e27c4"
+    },
+    "sglang/srt/models/minicpmo.py": {
+      "op": "replace",
+      "base_sha256": "d5b36d6c9339c1b3235786b1f207ac56c6156cccf8a336881c0bef8bcfddd221"
+    },
+    "sglang/srt/models/minimax_m2.py": {
+      "op": "replace",
+      "base_sha256": "6fa639767209a1eb014c06de9770c8af78a5f5117ce88f93d35b8ca1a034908a"
+    },
+    "sglang/srt/models/mistral_large_3.py": {
+      "op": "replace",
+      "base_sha256": "f11cf065e4281a72495f6c057d726aa1095a5a83a7f99067f40fdea11f7d0b38"
+    },
+    "sglang/srt/models/mistral_large_3_eagle.py": {
+      "op": "replace",
+      "base_sha256": "059e9a9951c7f695c5a380ef6ed5e746479766973e1484523596c3e6a81cbe8d"
+    },
+    "sglang/srt/models/opt.py": {
+      "op": "replace",
+      "base_sha256": "fa70a0fe0d88f3826d250ec5861d9eca9d5c928dd3c7189c85e33b806a57d00d"
+    },
+    "sglang/srt/models/qwen2.py": {
+      "op": "replace",
+      "base_sha256": "9d1e9d1011214412b8cc2031afadc0bcac1fbaf357de18daf50539f1f165cf97"
+    },
+    "sglang/srt/models/qwen2_5_vl.py": {
+      "op": "replace",
+      "base_sha256": "352d494c75883cf8e5433fe554445ad41444b1651ceaaccfcabfae5f26aa3e20"
+    },
+    "sglang/srt/models/qwen2_moe.py": {
+      "op": "replace",
+      "base_sha256": "9539f15a50decbb449ae61d3810cf2111b1050cc808b10bbfb3eef8b63a4d128"
+    },
+    "sglang/srt/models/qwen2_vl.py": {
+      "op": "replace",
+      "base_sha256": "417c02ea5f0673fe26078a34c5ec3675e3f7ca9755c65432223d7a8460604766"
+    },
+    "sglang/srt/models/qwen3.py": {
+      "op": "replace",
+      "base_sha256": "a391bb4a9742905a70264e29c4411c12ca517b6d0ff2a01cc65ca460a4237f30"
+    },
+    "sglang/srt/models/qwen3_moe.py": {
+      "op": "replace",
+      "base_sha256": "94179c997566e2a7926410691404e2d9b4cc2d64aa57f4e23a31627be9798a52"
+    },
+    "sglang/srt/models/qwen3_next.py": {
+      "op": "replace",
+      "base_sha256": "fcf1c51560aca92a6b9350bf4ae0d3a50da46158db825670b85a64e22ca0c144"
+    },
+    "sglang/srt/models/qwen3_omni_moe.py": {
+      "op": "replace",
+      "base_sha256": "78bf8492ed316cf69e2ee541e680f22b48375b10a9414f41bf589cd0d4429e9f"
+    },
+    "sglang/srt/models/qwen3_vl.py": {
+      "op": "replace",
+      "base_sha256": "a651bdef3e2f3ef7b99831a0f2a96c4bdc28c0263b6c9823d1a19addace0008d"
+    },
+    "sglang/srt/models/qwen3_vl_moe.py": {
+      "op": "replace",
+      "base_sha256": "c1438675af1e7b9373853234140d0db2defe2a5c5257f06dda18dd6cd04fea81"
+    },
+    "sglang/srt/models/registry.py": {
+      "op": "replace",
+      "base_sha256": "371a0f7d49a38fb09119173fffe54b02abd7224aaffe75e7efc28a5062916dc0"
+    },
+    "sglang/srt/models/step3_vl.py": {
+      "op": "replace",
+      "base_sha256": "57c416bc73c0bf8a5f711af7091a1380898f916de64f1284491e2900ddbcc015"
+    },
+    "sglang/srt/models/utils.py": {
+      "op": "replace",
+      "base_sha256": "60d689fb011d0f6433f010822838154d39801d0fef950ab5769607f6c29fbddf"
+    },
+    "sglang/srt/multimodal/processors/base_processor.py": {
+      "op": "replace",
+      "base_sha256": "5af2b418b05d354268539e9405d5ff7eb3101271570becc42cadc91bc0392d3c"
+    },
+    "sglang/srt/multimodal/processors/dots_vlm.py": {
+      "op": "replace",
+      "base_sha256": "cc7a581d01c0e00428c981dd18c5503a75f98da115e4f541af8d534f1b483ba9"
+    },
+    "sglang/srt/multimodal/processors/glmasr.py": {
+      "op": "add"
+    },
+    "sglang/srt/multimodal/processors/llava.py": {
+      "op": "replace",
+      "base_sha256": "4f565c26e051810154e8d8252f4ba3e8009f1236c91efb3b15ee13ff2b8f709a"
+    },
+    "sglang/srt/multimodal/processors/midashenglm.py": {
+      "op": "add"
+    },
+    "sglang/srt/multimodal/processors/qwen_vl.py": {
+      "op": "replace",
+      "base_sha256": "a3e2d40c1ec8281919ebeb9f185e4263544eb4a801f5845e0016b20314a1a356"
+    },
+    "sglang/srt/multimodal/vit_cuda_graph_runner.py": {
+      "op": "add"
+    },
+    "sglang/srt/parser/conversation.py": {
+      "op": "replace",
+      "base_sha256": "fa47004bc88b95d95a2cf1f130c42f2d381f3ae1f6fd16bd2f216e2942861dc0"
+    },
+    "sglang/srt/parser/reasoning_parser.py": {
+      "op": "replace",
+      "base_sha256": "19358752e8c1e16c24a758f475abf293fbaa9d1e9fd017edb3e16c11c68fff91"
+    },
+    "sglang/srt/sampling/sampling_batch_info.py": {
+      "op": "replace",
+      "base_sha256": "c65904b37ce0af0642341b3af491cbde883dfa326715b0c3dff44b249f8cdfa5"
+    },
+    "sglang/srt/sampling/sampling_params.py": {
+      "op": "replace",
+      "base_sha256": "47e05e80ece23b1b1e919af08efc26e7531a7b5277ee159183bbcfbe258b1cd9"
+    },
+    "sglang/srt/server_args.py": {
+      "op": "replace",
+      "base_sha256": "578fc20ee004129e13d8a13e47f3ebdf2ae5476a355e98a7090066631739b23d"
+    },
+    "sglang/srt/speculative/draft_utils.py": {
+      "op": "replace",
+      "base_sha256": "b65fa0db9ab0f4f3cd7fdfebd2f1d453d22d76c67dfce5893e3e46c51962d06d"
+    },
+    "sglang/srt/speculative/eagle_draft_cuda_graph_runner.py": {
+      "op": "replace",
+      "base_sha256": "fe27b8e1169aa091b7f07eb54a75987ca779b6cc4054e826fd112a82a10d0a12"
+    },
+    "sglang/srt/speculative/eagle_draft_extend_cuda_graph_runner.py": {
+      "op": "replace",
+      "base_sha256": "d5507a87f9bae0c6be64761e91526d0e09c563b14e1ebd86643ca3a71f136708"
+    },
+    "sglang/srt/speculative/eagle_info.py": {
+      "op": "replace",
+      "base_sha256": "27689b6f7727361018cb61c49a11dfb3a3ecac19134fa7af09d1230dd463491f"
+    },
+    "sglang/srt/speculative/eagle_info_v2.py": {
+      "op": "replace",
+      "base_sha256": "e483ede9e6faac4b10d622e13026264dbdf0d7c82b929dca2cb2bd61cb58244b"
+    },
+    "sglang/srt/speculative/eagle_worker.py": {
+      "op": "replace",
+      "base_sha256": "283dbb3fb4946981591551b352da011655ca82caaf6055f027765e4f14c64341"
+    },
+    "sglang/srt/speculative/eagle_worker_v2.py": {
+      "op": "replace",
+      "base_sha256": "f355045013d05ff1e4972aea82b88dce470b09ae701323c4043e33c3b7b5e108"
+    },
+    "sglang/srt/speculative/multi_layer_eagle_draft_extend_cuda_graph_runner.py": {
+      "op": "add"
+    },
+    "sglang/srt/speculative/multi_layer_eagle_utils.py": {
+      "op": "add"
+    },
+    "sglang/srt/speculative/multi_layer_eagle_worker.py": {
+      "op": "add"
+    },
+    "sglang/srt/speculative/multi_layer_eagle_worker_v2.py": {
+      "op": "add"
+    },
+    "sglang/srt/speculative/ngram_info.py": {
+      "op": "replace",
+      "base_sha256": "256b22182eb4a62ff7fca9fe1027c0f7a7f0147326a0f92858264c8085eb514b"
+    },
+    "sglang/srt/speculative/ngram_worker.py": {
+      "op": "replace",
+      "base_sha256": "637bbceea09bc3f5c58db787a8ccbb734d6e70ecd319a7746c152ba30214cb4b"
+    },
+    "sglang/srt/speculative/spec_utils.py": {
+      "op": "replace",
+      "base_sha256": "aa80a35450bf428f72c5307727b8441afaad130ffc7df97837f1162297f7fa6e"
+    },
+    "sglang/srt/utils/common.py": {
+      "op": "replace",
+      "base_sha256": "304816d44e9a184fd58acf175754182e2c5cd3cc13afd9c4694bab0628289248"
+    },
+    "sglang/srt/utils/cuda_ipc_transport_utils.py": {
+      "op": "replace",
+      "base_sha256": "8ce160376c4f43997b9fc832697d69223b726b0382a98593643ed073386fbb7a"
+    },
+    "sglang/srt/utils/device_timer.py": {
+      "op": "add"
+    },
+    "sglang/srt/utils/hf_transformers_utils.py": {
+      "op": "replace",
+      "base_sha256": "95e7b0600c59d0da3fad751c2d8a644f865d0a75c2aa96dec4726fd3fc3f369c"
+    },
+    "sglang/srt/utils/mistral_utils.py": {
+      "op": "replace",
+      "base_sha256": "f13cd0fef980074f73f345df6576ad428de0ef427e56e36ccfcec86baf65618f"
+    },
+    "sglang/srt/utils/patch_torch.py": {
+      "op": "replace",
+      "base_sha256": "d088acfaf448576fab8f242a8361ea72411a7c452b89ee07f7696a98d08c5903"
+    },
+    "sglang/srt/utils/request_logger.py": {
+      "op": "add"
+    },
+    "sglang/srt/utils/watchdog.py": {
+      "op": "add"
+    },
+    "sglang/test/accuracy_test_runner.py": {
+      "op": "add"
+    },
+    "sglang/test/ascend/__init__.py": {
+      "op": "add"
+    },
+    "sglang/test/ascend/gsm8k_ascend_mixin.py": {
+      "op": "add"
+    },
+    "sglang/test/ascend/vlm_utils.py": {
+      "op": "add"
+    },
+    "sglang/test/attention/test_flashattn_backend.py": {
+      "op": "replace",
+      "base_sha256": "0968ee6d339092559af69778de2c20998c5b0dcd5f46d069c539f8b1229049f6"
+    },
+    "sglang/test/ci/__init__.py": {
+      "op": "add"
+    },
+    "sglang/test/ci/ci_utils.py": {
+      "op": "replace",
+      "base_sha256": "60e9a1634f5c92ca8b9061e961fe59f452b7386479012a74b9ce346f6ffe72e1"
+    },
+    "sglang/test/ci/run_with_retry.py": {
+      "op": "add"
+    },
+    "sglang/test/kits/gsm8k_accuracy_kit.py": {
+      "op": "add"
+    },
+    "sglang/test/kits/mmmu_vlm_kit.py": {
+      "op": "add"
+    },
+    "sglang/test/kl_test_utils.py": {
+      "op": "replace",
+      "base_sha256": "805995ef014cc3784638eae5d87c82a54e5752a8fd6f4588c179cec93cb6ea86"
+    },
+    "sglang/test/lora_utils.py": {
+      "op": "add"
+    },
+    "sglang/test/nightly_utils.py": {
+      "op": "add"
+    },
+    "sglang/test/performance_test_runner.py": {
+      "op": "add"
+    },
+    "sglang/test/run_combined_tests.py": {
+      "op": "add"
+    },
+    "sglang/test/run_eval.py": {
+      "op": "replace",
+      "base_sha256": "9ba0f75d7e0ea66c2d9f1e448de5db47158442c9ff92ac0d942aea18f428112d"
+    },
+    "sglang/test/server_fixtures/default_fixture.py": {
+      "op": "add"
+    },
+    "sglang/test/server_fixtures/eagle_fixture.py": {
+      "op": "add"
+    },
+    "sglang/test/simple_eval_aime25.py": {
+      "op": "add"
+    },
+    "sglang/test/test_utils.py": {
+      "op": "replace",
+      "base_sha256": "e15d52a6fba857925226331bbf35176fcd87f40545e6192d2cf090f2a01683bc"
+    },
+    "sglang/multimodal_gen/csrc/attn/vmoba_attn/setup.py": {
+      "op": "replace",
+      "base_sha256": "7cb78abf9ca9acf25098d7a460b3367e6886fec303fbd9dd950e5f0c5b7a6f83"
+    }
+  },
+  "replacement_source": "third_party/sglang.tar.gz",
+  "selection": "manifest dependencies entry files; unselected upstream files are omitted"
+}

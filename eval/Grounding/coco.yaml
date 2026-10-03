@@ -1,0 +1,6 @@
+task: gam_coco
+include: _box_template.yaml
+dataset_kwargs:
+  data_files: ${EVAL_DATA:gam_coco}
+metadata:
+  sample_count: 4952

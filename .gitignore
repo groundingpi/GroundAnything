@@ -1,0 +1,57 @@
+# Generated dependencies, user resources and outputs
+/vendor/
+/dist/
+/weights/
+/data/
+/outputs/
+/resources/
+/build/
+.venv*/
+__pycache__/
+.pytest_cache/
+*.py[cod]
+*.egg-info/
+
+# Obsolete/generated release audit directory
+/release/
+
+# Credentials and private configuration
+.env
+.env.*
+!.env.example
+!.env.sample
+!.env.template
+credentials.json
+credentials.*.json
+.netrc
+.ossutilconfig
+.aliyun/
+.aws/
+.ssh/
+**/.docker/config.json
+id_rsa
+id_ed25519
+*.key
+*.pem
+*.p12
+*.pfx
+secrets/
+
+# Logs, checkpoints and profiling artifacts
+logs/
+wandb/
+runs/
+checkpoints/
+profiler/
+*.log
+events.out.tfevents.*
+core
+core.*
+*.prof
+*.nsys-rep
+*.ncu-rep
+*.trace.json
+*.trace.json.gz
+
+# Local review copy; the exact main demo is hosted on Hugging Face.
+/docs/assets/demo.mp4

@@ -1,0 +1,29 @@
+task: gam_osworld_g
+dataset_path: json
+dataset_name: osworldg
+dataset_kwargs:
+  data_files:
+    test: ${EVAL_DATA:gam_osworld_g}
+test_split: test
+output_type: generate_until
+doc_to_visual: !function osworldg_utils.doc_to_visual
+doc_to_text: !function osworldg_utils.doc_to_text
+doc_to_messages: !function osworldg_utils.doc_to_messages
+doc_to_target: box_coordinates
+process_results: !function osworldg_utils.process_results
+generation_kwargs:
+  max_new_tokens: 512
+  temperature: 0.0
+  top_p: 1.0
+  num_beams: 1
+metric_list:
+  - metric: exact_acc
+    aggregation: !function osworldg_utils.aggregate_results
+    higher_is_better: true
+  - metric: parse_error_rate
+    aggregation: !function osworldg_utils.aggregate_parse_error_rate
+    higher_is_better: false
+metadata:
+  version: '1.0'
+  sample_count: 564
+  description: OSWorld-G GUI element grounding (bbox/polygon/refusal)

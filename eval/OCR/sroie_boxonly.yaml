@@ -1,0 +1,6 @@
+task: gam_sroie_Boxonly
+include: sroie.yaml
+process_results: !function utils.process_results_boxonly
+metadata:
+  sample_count: 360
+  variant: boxonly

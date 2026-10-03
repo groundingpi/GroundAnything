@@ -1,0 +1,88 @@
+mode: DLM
+meta:
+  experiment: dlm-specialist
+  description: DLM specialist training configuration.
+model:
+  family: groundinganything_qwen3
+  path: weights/base_model
+  output_dir: outputs/specialist
+data:
+  sampling_manifest: data/specialist/sampling/manifest.json
+  packing_manifest: data/specialist/packing/manifest.json
+  sampled_rows: 29996394
+training:
+  num_train_epochs: 2
+  per_device_train_batch_size: 32
+  validated_large_batch_size: 32
+  gradient_accumulation_steps: 1
+  expected_global_batch_size: 2048
+  learning_rate: 2.0e-05
+  backbone_learning_rate: 2.0e-05
+  projector_learning_rate: 2.0e-05
+  vision_learning_rate: 2.0e-06
+  lr_scheduler_type: cosine
+  warmup_ratio: 0.03
+  optim: adamw_torch_fused
+  adam_beta1: 0.9
+  adam_beta2: 0.95
+  adam_epsilon: 1.0e-08
+  weight_decay: 0.1
+  max_grad_norm: 1.0
+  freeze_vision_encoder: false
+  gradient_checkpointing: true
+  vision_gradient_checkpointing: true
+  language_checkpoint_stride: 0
+  padding_free_packing: true
+  packing_linear_kernel: chunk
+  packing_lm_head_loss_backend: fused
+  packing_lm_head_loss_chunk_tokens: 128
+  packing_activation_cpu_offload: false
+  packing_offload_threshold_mib: 56
+  packing_offload_min_tokens: 0
+  packing_offload_layer_stride: 3
+  packing_offload_pin_memory: false
+  allocator_empty_cache_steps: 5
+  block_size: 32
+  block_annealing: false
+  minimum_noise_level: 0.0
+  casuallossenable: true
+  mdm_loss_weight: 0.5
+  causal_loss_weight: 0.5
+  vision_attn_implementation: flash_attention_2
+  logging_steps: 5
+  save_strategy: steps
+  save_steps: 0.05
+  save_final_full_checkpoint: true
+  dataloader_num_workers: 2
+  seed: 42
+  data_seed: 42
+runtime:
+  expected_nodes: 8
+  expected_gpus_per_node: 8
+  expected_world_size: 64
+  image_max_token_num: 1024
+  max_length: 4096
+  max_joint_length: 8192
+  selected_tail_actual_length_audit: data/specialist/audits/selected_tail_actual_length_audit.json
+  selected_image_integrity_audit: data/specialist/audits/selected_image_integrity_audit.json
+  selected_response_block_audit: data/specialist/audits/selected_response_block_audit.json
+  minimum_over_32_response_ratio: 0.4
+  maximum_ocr_dense_response_token_share: 0.55
+  minimum_route_response_token_shares:
+    general_replay: 0.15
+    referring: 0.025
+    gui: 0.02
+    general_support: 0.003
+  minimum_route_rows:
+    dense: 2499982
+    ocr: 2999577
+    grounding: 3499986
+    referring: 5999999
+    dense_point: 1499973
+    refer_point: 2999997
+    gui: 3499991
+    visual_prompt: 1999980
+    layout: 1500000
+    general_support: 499529
+    general_replay: 2997380
+  deepspeed_config: ./train/dlm/deepspeed_zero1_hf_optimizer_bucket100m.json

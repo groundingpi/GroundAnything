@@ -1,0 +1,6 @@
+task: gam_coco_Labelless
+include: coco.yaml
+process_results: !function utils.process_results_labelless
+metadata:
+  sample_count: 4952
+  variant: labelless

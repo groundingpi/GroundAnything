@@ -1,0 +1,6 @@
+task: gam_doclaynet
+include: _layout_template.yaml
+dataset_kwargs:
+  data_files: ${EVAL_DATA:gam_doclaynet}
+metadata:
+  sample_count: 6480

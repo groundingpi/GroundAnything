@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "name": "task_profiles",
+  "revision": "DecodeV4",
+  "checkpoint_scope": "Final_V2_Block32",
+  "activation": {
+    "GAM_SGLANG_ALGORITHM": "decode_v2",
+    "GAM_DLM_DECODE_PROFILE": "task_profiles",
+    "GAM_DLM_SINGLE_TARGET_RULE": "1"
+  },
+  "shared_decode": {
+    "acceptance_policy": "entropy",
+    "entropy_threshold": 0.8,
+    "top_k": 0,
+    "position_penalty": 0.0,
+    "repetition_mode": "none",
+    "repetition_weight": 0.0,
+    "enable_eos_early_stop": false,
+    "block_size": 32,
+    "sub_block_size": 4,
+    "denoise_steps": 4,
+    "legacy_force_fill_all": false,
+    "sampling_seed": 42
+  },
+  "tiers": {
+    "strict_single": {
+      "count": 14,
+      "temperature": 0.0,
+      "top_p": 1.0,
+      "max_tokens": 512,
+      "expected_cardinality": 1,
+      "tasks": [
+        "gam_refcocog_val", "gam_refcocog_test", "gam_refcoco",
+        "gam_refcocog", "gam_refcocoplus",
+        "gam_rex_point_refcocog_test", "gam_rex_point_refcocog_val",
+        "gam_refspatial_location", "gam_refspatial_placement",
+        "gam_refspatial_unseen", "gam_robospatial_context",
+        "gam_screenspot_pro", "gam_screenspot_v2", "gam_osworld_g"
+      ]
+    },
+    "medium": {
+      "count": 12,
+      "temperature": 0.1,
+      "top_p": 0.95,
+      "max_tokens": 4096,
+      "expected_cardinality": null,
+      "tasks": [
+        "gam_lvis", "gam_lvis_Labelless", "gam_coco",
+        "gam_coco_Labelless", "gam_m6doc", "gam_doclaynet",
+        "gam_rex_point_lvis", "gam_rex_point_coco", "gam_humanref",
+        "gam_rex_point_humanref", "gam_visual_lvis", "gam_visual_coco"
+      ]
+    },
+    "dense": {
+      "count": 8,
+      "temperature": 0.1,
+      "top_p": 0.95,
+      "max_tokens": 8192,
+      "expected_cardinality": null,
+      "tasks": [
+        "gam_dense200", "gam_visdrone", "gam_dense200_Labelless",
+        "gam_visdrone_Labelless", "gam_rex_point_dense200",
+        "gam_rex_point_visdrone", "gam_fsc147", "gam_visual_dense200"
+      ]
+    },
+    "ocr_medium": {
+      "count": 4,
+      "temperature": 0.3,
+      "top_p": 0.95,
+      "max_tokens": 4096,
+      "expected_cardinality": null,
+      "tasks": [
+        "gam_totaltext", "gam_totaltext_Boxonly",
+        "gam_icdar2015", "gam_icdar2015_Boxonly"
+      ]
+    },
+    "ocr_dense": {
+      "count": 4,
+      "temperature": 0.0,
+      "top_p": 1.0,
+      "max_tokens": 4096,
+      "expected_cardinality": null,
+      "tasks": [
+        "gam_sroie", "gam_sroie_Boxonly",
+        "gam_hiertext", "gam_hiertext_Boxonly"
+      ]
+    }
+  },
+  "invariants": {
+    "task_count": 42,
+    "tiers_are_pairwise_disjoint": true,
+    "outer_and_dlm_sampling_are_aligned": true,
+    "top_k_is_disabled": true,
+    "unlisted_tasks_fail_closed": true
+  }
+}

@@ -1,0 +1,6 @@
+task: gam_rex_point_refcocog_val
+include: _point_template.yaml
+dataset_kwargs:
+  data_files: ${EVAL_DATA:gam_rex_point_refcocog_val}
+metadata:
+  sample_count: 4887

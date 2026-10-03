@@ -1,0 +1,44 @@
+task: gam_screenspot_v2
+dataset_path: json
+dataset_name: gui_grounding
+dataset_kwargs:
+  data_files:
+    - ${EVAL_DATA:screenspot_v2}/screenspot_desktop_v2.json
+    - ${EVAL_DATA:screenspot_v2}/screenspot_mobile_v2.json
+    - ${EVAL_DATA:screenspot_v2}/screenspot_web_v2.json
+test_split: train
+output_type: generate_until
+process_docs: !function screenspot_v2_utils.screenspot_v2_process_docs
+doc_to_visual: !function screenspot_v2_utils.screenspot_v2_doc_to_visual
+doc_to_text: !function screenspot_v2_utils.screenspot_v2_doc_to_text
+doc_to_messages: !function screenspot_v2_utils.screenspot_v2_doc_to_messages
+doc_to_target: bbox
+process_results: !function screenspot_v2_utils.screenspot_v2_process_results
+generation_kwargs:
+  max_new_tokens: 512
+  temperature: 0.0
+  top_p: 1.0
+  num_beams: 1
+lmms_eval_specific_kwargs:
+  default:
+    pre_prompt: ""
+    post_prompt: ""
+    system_prompt: "You are a GUI agent. You are given a task and a screenshot of the screen. You need to finish this task following instructions from users."
+    dataset_path: ${EVAL_DATA:screenspot_v2}
+    image_subdir: screenspotv2_image
+    task_id: gam_screenspot_v2
+    inst_style: instruction
+    language: en
+    gt_type: positive
+metric_list:
+  - metric: action_acc
+    aggregation: !function screenspot_v2_utils.screenspot_v2_aggregate_results
+    higher_is_better: true
+  - metric: parse_error_rate
+    aggregation: !function screenspot_v2_utils.screenspot_v2_aggregate_parse_error_rate
+    higher_is_better: false
+metadata:
+  version: 2.0
+  sample_count: 1272
+  output_geometry: point_only
+  description: ScreenSpot-v2 point-only GUI grounding, split by mobile/desktop/web and text/icon

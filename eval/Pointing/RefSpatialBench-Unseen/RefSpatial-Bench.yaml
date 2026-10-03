@@ -1,0 +1,18 @@
+dataset_path: ${EVAL_DATA:refspatial}
+dataset_kwargs:
+  token: True
+task: "gam_refspatial_unseen"
+test_split: unseen
+output_type: generate_until
+doc_to_visual: !function utils.refspatialbench_doc_to_visual
+doc_to_text: !function utils.refspatialbench_doc_to_text
+doc_to_target: "answer"
+
+process_results: !function utils.refspatialbench_process_results
+metric_list:
+  - metric: score
+    aggregation: !function utils.aggregate_score
+    higher_is_better: true
+
+metadata:
+  - version: 0.0

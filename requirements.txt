@@ -1,0 +1,4 @@
+# Install the HTTP client, visualization and setup command dependencies.
+# Run from the repository root; project dependencies are defined in pyproject.toml.
+# Training, serving and evaluation use the separate requirements/ profiles.
+-e .[visualization]

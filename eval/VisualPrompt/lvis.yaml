@@ -1,0 +1,6 @@
+task: gam_visual_lvis
+include: _visual_prompt_template.yaml
+dataset_kwargs:
+  data_files: ${EVAL_DATA:gam_visual_lvis}
+metadata:
+  source_sample_count: 19626

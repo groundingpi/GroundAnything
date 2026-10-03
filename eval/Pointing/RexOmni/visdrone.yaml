@@ -1,0 +1,6 @@
+task: gam_rex_point_visdrone
+include: _point_template.yaml
+dataset_kwargs:
+  data_files: ${EVAL_DATA:gam_rex_point_visdrone}
+metadata:
+  sample_count: 1610

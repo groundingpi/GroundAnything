@@ -1,0 +1,6 @@
+task: gam_m6doc
+include: _layout_template.yaml
+dataset_kwargs:
+  data_files: ${EVAL_DATA:gam_m6doc}
+metadata:
+  sample_count: 2724

@@ -1,0 +1,33 @@
+tracerl:
+  method: TraceRL
+  num_generations: 8
+  policy_epochs_per_rollout: 1
+  block_size: 32
+  causal_anchor_tokens: 1
+  diffusion_tokens_per_block: 31
+  sub_block_size: 4
+  token_shift: 1
+  entropy_threshold: 0.8
+  legacy_force_fill_all: false
+  temperature: 0.7
+  top_p: 1.0
+  top_k: 0
+  max_new_tokens: 4096
+  repetition_penalty: 0.0
+  position_penalty: 0.0
+  enable_eos_early_cut: false
+  expected_cardinality: null
+  single_target_rule: false
+  task_profile: null
+  clip_epsilon: 0.2
+  learning_rate: 1.0e-6
+  max_grad_norm: 1.0
+  reference_kl_beta: 0.0
+  value_model: false
+  weight_decay: 0.01
+  adam_beta1: 0.9
+  adam_beta2: 0.999
+  adam_epsilon: 1.0e-8
+  save_steps: 281
+  seed: 20260812
+

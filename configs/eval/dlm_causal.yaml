@@ -1,0 +1,16 @@
+mode: GAM
+model_path: weights/dlm_bundle
+model_type: qwen3vl
+api_url: http://127.0.0.1:8101/v1
+data_root: data/eval
+datasets: configs/datasets.yaml
+output_root: outputs/eval
+tasks:
+- gam_refcocog_val
+run_id: dlm_causal_smoke_001
+limit: 8
+concurrency: 2
+base_port: 12345
+model_id: groundinganything
+service_contract: openai
+decoder: causal

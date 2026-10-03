@@ -1,0 +1,6 @@
+task: gam_visual_coco
+include: _visual_prompt_template.yaml
+dataset_kwargs:
+  data_files: ${EVAL_DATA:gam_visual_coco}
+metadata:
+  source_sample_count: 4952

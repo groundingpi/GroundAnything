@@ -1,0 +1,16 @@
+dataset_path: eval/rexomni_jsonl.py
+output_type: generate_until
+test_split: validation
+doc_to_visual: !function utils.doc_to_visual
+doc_to_text: !function utils.doc_to_text
+doc_to_target: gt_json
+process_results: !function utils.process_results
+generation_kwargs:
+  max_new_tokens: 4096
+  temperature: 0.0
+  top_p: 1.0
+  do_sample: false
+  until: []
+metadata:
+  version: '1.0'
+  primary_metric: loose_match_F1mIoU
