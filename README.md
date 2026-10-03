@@ -27,8 +27,6 @@
 
 <p align="center"><a href="#demo">Demo Video</a> · <a href="#quick-start">Quick Start</a> · <a href="#documentation">Documentation</a> · <a href="#citation">Citation</a></p>
 
-> **GroundAnything** brings entropy-guided parallel decoding to precise visual grounding. This repository supports both the diffusion model **GroundAnything** and its autoregressive counterpart **GroundAnything-VLM**.
-
 <p align="center"><img src="docs/assets/teaser.png" alt="GroundAnything visual grounding overview" width="100%" /></p>
 
 <a id="news"></a>
