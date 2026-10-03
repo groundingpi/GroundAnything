@@ -47,9 +47,9 @@
 
 ## ✨ Highlights
 
-- **Unlocking diffusion for broad visual grounding.** We introduce GroundAnything, a 4B foundation model combining precise localization with blockwise parallel decoding. Its training recipe integrates grounding pretraining, AR-to-diffusion conversion with joint objectives, supervised fine-tuning, and GRPO-based reinforcement learning.
-- **State-of-the-art grounding at 4B scale.** Across 30 benchmarks, entropy-guided GroundAnything surpasses the prior overall state of the art among similarly sized autoregressive models and outperforms Qwen3.7-Max. GroundAnything-VLM establishes a new overall state of the art at this scale while remaining competitive with GPT-6 Astra.
-- **Systematic acceleration studies.** We investigate entropy-guided and self-speculative decoding, compare with MTP-based generation, and evaluate progressive SGLang, CUDA Graph, and selective FP8 optimizations to characterize practical speed and quality trade-offs.
+- **Unlocking diffusion for broad visual grounding.** We introduce GroundAnything, a 4B foundation model that unifies diverse grounding tasks with precise localization and parallel decoding, trained through grounding pretraining, AR-to-diffusion conversion with joint objectives, supervised fine-tuning, and GRPO-based reinforcement learning.
+- **State-of-the-art grounding at 4B scale.** Across 30 benchmarks, GroundAnything surpasses the prior overall state of the art among similarly sized AR models and outperforms the larger Qwen3.7-Max. GroundAnything-VLM establishes a new overall state of the art at this scale and remains competitive with GPT-6 Astra.
+- **Systematic acceleration studies.** We analyze decoding strategies in detail, compare with MTP-based generation, and evaluate progressive infrastructure optimizations for practical deployment.
 
 <a id="demo"></a>
 
@@ -284,7 +284,7 @@ Use the checkpoint's tokenizer, processor, and chat template. Custom HTTP reques
 
 ## ⚙️ Method and Inference Infrastructure
 
-The two checkpoints share a **MoonViT-V2 / Kimi-K3 vision backbone**, a **2 × 2 spatial aggregation projector**, and a **Qwen3-4B-Instruct-2507** language backbone. Diffusion conversion enables bidirectional denoising over response blocks while retaining a causal branch in the shared model.
+The variants share a MoonViT-V2 (Kimi K3) visual encoder, a multimodal projector, and a Qwen3-4B language architecture.
 
 <p align="center"><img src="https://huggingface.co/GroundingPI/GroundAnything/resolve/0f8e30894c3ca86378d01ae51ec69c217c78151b/assets/fig2-architecture.png" alt="GroundAnything model architecture" width="100%" /></p>
 
@@ -293,15 +293,19 @@ The two checkpoints share a **MoonViT-V2 / Kimi-K3 vision backbone**, a **2 × 2
 
 ### ⚡ Entropy-guided decoding
 
-After image/query prefill, decoding proceeds over response blocks. The release recipe uses **block size 32**, **sub-block size 4**, and **entropy threshold 0.8**. Each physical block contains a known anchor and 31 masked positions.
+The release recipe uses **block size 32**, **sub-block size 4**, and **entropy threshold 0.8**. Each physical block contains a known anchor and 31 masked positions.
 
-For masked positions in the active sub-block, the decoder measures entropy over the generatable vocabulary. Tokens at or below the threshold are committed together; if none qualifies, the lowest-entropy token is committed to ensure progress. Committed tokens stay fixed. A causal pass then builds the completed block's KV cache and supplies the next anchor. This pass does not reject or verify the denoised tokens.
+After image/query prefill, GroundAnything denoises response blocks with bidirectional attention and caches the completed prefix. Sub-blocks are processed from left to right. Our default *Entropy-Guided Decoding* commits masked positions with $H_j\leq\tau$, where $H_j=-\sum_v p_j(v)\log p_j(v)$ is the entropy of the unmodified token distribution. If none qualifies, the lowest-entropy position is committed to ensure progress. Committed tokens remain fixed, and a causal pass constructs the completed block's cache without AR verification.
 
 <a id="self-speculative-decoding"></a>
 
 ### 🚀 Self-speculative decoding
 
-The same weights draft tokens with bidirectional attention and verify them causally. Verification accepts the longest consecutive matching prefix, corrects the first mismatch, and discards rejected suffix cache states. The documented `--decoder speculative` route uses **linear drafting and greedy verification**. Its reference is the converted model's causal branch, which can differ from the separately trained GroundAnything-VLM checkpoint.
+The shared weights also support diffusion drafting with causal verification, accepting the longest matching prefix. Verification accepts only the longest consecutive draft prefix agreeing with the causal predictions. The first disagreement ends acceptance; later coincidental matches are discarded. Rejected suffix states are removed from the cache.
+
+Self-speculation verifies against the converted model's causal branch. Exact greedy verification preserves that branch's outputs, not necessarily the outputs of the separately trained GroundAnything-VLM.
+
+The documented `--decoder speculative` route uses **linear drafting and greedy verification**.
 
 <p align="center"><img src="https://huggingface.co/GroundingPI/GroundAnything/resolve/0f8e30894c3ca86378d01ae51ec69c217c78151b/assets/fig6-self-speculative-decoding.png" alt="GroundAnything self-speculative decoding" width="100%" /></p>
 
@@ -310,7 +314,9 @@ The same weights draft tokens with bidirectional attention and verify them causa
 
 ### ⚙️ SGLang, CUDA Graph, and FP8
 
-The custom **SGLang** integration coordinates request scheduling, attention execution, and KV-cache updates for denoising and self-speculation. The default DLM service uses **BF16**, **Triton attention**, **eager execution**, **one GPU**, **one active request**, and **two queued requests**. Client concurrency queues requests; use independent replicas for higher service concurrency.
+The implementation progresses from Native PyTorch (Eager) to SGLang (Eager), CUDA Graph replay, and selective FP8 execution. Denoising and causal passes retain their respective attention and cache semantics. FP8 applies to eligible language-model linear operations, with the remaining components kept in BF16. These changes reduce execution overhead or arithmetic cost; quantization can still alter logits and decoding decisions.
+
+The default DLM service uses **BF16**, **Triton attention**, **eager execution**, **one GPU**, **one active request**, and **two queued requests**. Client concurrency queues requests; use independent replicas for higher service concurrency.
 
 | Execution option | Purpose | Supplied default |
 |:---|:---|:---|
@@ -412,7 +418,7 @@ The [Training Guide](docs/TRAINING.md) also covers optional reinforcement learni
 <p align="center"><img src="https://huggingface.co/GroundingPI/GroundAnything/resolve/0f8e30894c3ca86378d01ae51ec69c217c78151b/assets/fig7-grounding-performance.png" alt="GroundAnything and GroundAnything-VLM grounding results" width="100%" /></p>
 
 
-Across the paper's 30 grounding benchmarks, **GroundAnything-VLM averages 72.42%** and **GroundAnything with entropy-guided decoding averages 61.75%**. Full benchmark definitions, speed comparisons, and ablations are in the [paper and supplementary material](https://arxiv.org/abs/2609.39600).
+[Paper and supplementary material](https://arxiv.org/abs/2609.39600).
 
 <a id="documentation"></a>
 
