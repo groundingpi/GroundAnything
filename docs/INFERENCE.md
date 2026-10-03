@@ -70,7 +70,7 @@ result = client.predict("your_image.jpg", "the red car", task="bbox")
 print(result.to_dict())
 ```
 
-Use `task="point"` for point localization. See [examples](../examples/README.md) for visualization and command-line usage. Custom API requests should preserve spatial tokens with `skip_special_tokens=false`.
+Use `task="point"` for point localization. See [examples](../examples/README.md) for visualization and command-line usage. Custom API requests must preserve spatial tokens and their adjacency with `skip_special_tokens=false` and `spaces_between_special_tokens=false`.
 
 
 ## GroundAnything-VLM with SGLang
@@ -79,3 +79,9 @@ Place the GroundAnything-VLM release in `weights/vlm/`, then start its causal
 SGLang service with `python3 run.py serve --config configs/release/vlm_sglang.yaml`.
 It serves model ID `groundinganything-vlm` on port 8102. The DLM decoder
 recipes continue to use `weights/dlm_bundle/` and port 8101.
+
+## 🗂️ Batch annotation
+
+For image collections, use the resumable [JSONL batch example and guide](BATCH_INFERENCE.md). The client supports the OpenAI-compatible endpoint and preserves GAM coordinate tokens.
+
+See the [vLLM Deployment Guide](VLLM.md) for platform setup, configuration, and a complete image request.

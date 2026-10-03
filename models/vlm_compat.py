@@ -11,17 +11,45 @@ def _accept_prepared_source(module):
         @lru_cache(maxsize=1)
         def canonical():
             original = (Path(__file__).parent / "vlm" / module).read_text()
+            # Some releases already ship the complete serving-compatible model
+            # sources. Do not patch that trusted canonical a second time. Remote
+            # input is accepted only when its full AST matches this canonical.
+            prepared_markers = {
+                "configuration_groundinganything.py": (
+                    "@dataclass(init=False)", "from transformers.models.qwen3.configuration_qwen3 import Qwen3Config",
+                    "PreTrainedConfig.__post_init__(self, **kwargs)",
+                ),
+                "modeling_groundinganything.py": (
+                    "    def is_flash_attention_requested(config):", "    _supports_attention_backend = True",
+                ),
+                "modeling_groundinganything_vision.py": (
+                    "nn.RMSNorm(hidden_dim, eps=1e-6)", '"sdpa": sdpa_attention', "def sdpa_attention(",
+                ),
+                "processing_groundinganything.py": (
+                    "class GroundAnythingVLMProcessor(ProcessorMixin):", "def _get_num_multimodal_tokens(",
+                    'text_inputs["mm_token_type_ids"] = mm_token_type_ids',
+                ),
+            }
+            if all(marker in original for marker in prepared_markers[module]):
+                return ast.dump(ast.parse(original))
             return ast.dump(ast.parse(transform(original)))
 
         @wraps(transform)
         def apply(source):
             try:
                 parsed = ast.dump(ast.parse(source))
-            except SyntaxError:
-                return transform(source)
+            except SyntaxError as exc:
+                raise ValueError(f"invalid model source: {module}") from exc
             if parsed == canonical():
                 return source
-            return transform(source)
+            result = transform(source)
+            try:
+                supported = ast.dump(ast.parse(result)) == canonical()
+            except SyntaxError as exc:
+                raise ValueError(f"unsupported model source: {module}") from exc
+            if not supported:
+                raise ValueError(f"unsupported model source: {module}")
+            return result
 
         return apply
     return decorate
@@ -337,5 +365,3 @@ def _patched_processor_source(source: str) -> str:
 
 '''
     return source[:call_start] + patched_call + source[call_end:]
-
-
