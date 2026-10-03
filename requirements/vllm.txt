@@ -1,0 +1,5 @@
+# Inherit vLLM 0.18.x, Torch, and accelerator kernels from a matching platform image.
+# The isolated vLLM environment installs the bundled Transformers 5.7.0 fork.
+# This file does not change requirements/serve.txt (the SGLang environment).
+huggingface-hub==1.32.0
+regex==2026.9.10

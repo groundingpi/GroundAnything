@@ -3,11 +3,26 @@
 <p align="center"><strong>Reconciling Parallel Decoding with Precise Visual Grounding at Flash Speed</strong></p>
 
 <p align="center">
-  [<a href="https://arxiv.org/abs/2609.39600">📘 Paper</a>]
-  [<a href="https://huggingface.co/GroundingPI/GroundAnything">🤗 HF Model</a>]
-  [<a href="https://huggingface.co/spaces/GroundingPI/GroundAnything-VLM">🤗 HF Demo</a>]
-  [<a href="https://groundingpi.github.io/groundanything/">🌐 Project Page</a>]
-  [<a href="https://github.com/groundingpi/GroundAnything">💻 GitHub</a>]
+  <a href="#highlights"><img src="https://img.shields.io/badge/%E2%9C%A8%20Diffusion%20Decoding-26734d?style=for-the-badge" alt="✨ Diffusion Decoding" /></a>
+  <a href="#highlights"><img src="https://img.shields.io/badge/%E2%9A%A1%20Entropy--guided-cb8625?style=for-the-badge" alt="⚡ Entropy-guided" /></a>
+  <a href="#highlights"><img src="https://img.shields.io/badge/%F0%9F%A7%A9%20Parallel%20Decoding-367ab5?style=for-the-badge" alt="🧩 Parallel Decoding" /></a>
+  <a href="#highlights"><img src="https://img.shields.io/badge/%F0%9F%8E%AF%20Multitask%20Grounding-7050ad?style=for-the-badge" alt="🎯 Multitask Grounding" /></a>
+</p>
+
+<p align="center">
+  <a href="https://arxiv.org/abs/2609.39600"><img src="https://img.shields.io/badge/%F0%9F%93%98%20Paper-b53f4c?style=flat-square" alt="📘 Paper" /></a>
+  <a href="https://huggingface.co/GroundingPI/GroundAnything"><img src="https://img.shields.io/badge/%F0%9F%A4%97%20HF%20Model%20%C2%B7%20DLM-cb8625?style=flat-square" alt="🤗 HF Model · DLM" /></a>
+  <a href="https://huggingface.co/GroundingPI/GroundAnything-VLM"><img src="https://img.shields.io/badge/%F0%9F%A4%97%20HF%20Model%20%C2%B7%20VLM-cb8625?style=flat-square" alt="🤗 HF Model · VLM" /></a>
+  <a href="https://huggingface.co/spaces/GroundingPI/GroundAnything-VLM"><img src="https://img.shields.io/badge/%F0%9F%A4%97%20HF%20Demo-cb8625?style=flat-square" alt="🤗 HF Demo" /></a>
+  <a href="https://groundingpi.github.io/groundanything/"><img src="https://img.shields.io/badge/%F0%9F%8C%90%20Project%20Page-367ab5?style=flat-square" alt="🌐 Project Page" /></a>
+  <a href="https://github.com/groundingpi/GroundAnything"><img src="https://img.shields.io/badge/%F0%9F%92%BB%20GitHub-30363d?style=flat-square" alt="💻 GitHub" /></a>
+</p>
+
+<p align="center">
+  <a href="#quick-start"><img src="https://img.shields.io/badge/SGLang%20%C2%B7%20DLM%20%2B%20VLM-7050ad?style=flat-square" alt="SGLang · DLM + VLM" /></a>
+  <a href="#vllm-deployment"><img src="https://img.shields.io/badge/vLLM%20%C2%B7%20VLM%20adapter-548c38?style=flat-square" alt="vLLM · VLM adapter" /></a>
+  <a href="#deployment-options"><img src="https://img.shields.io/badge/OpenAI--compatible%20API-367ab5?style=flat-square" alt="OpenAI-compatible API" /></a>
+  <a href="#batch-annotation"><img src="https://img.shields.io/badge/Batch%20annotation%20%C2%B7%20JSONL-cb8625?style=flat-square" alt="Batch annotation · JSONL" /></a>
 </p>
 
 <p align="center"><a href="#demo">Demo Video</a> · <a href="#quick-start">Quick Start</a> · <a href="#documentation">Documentation</a> · <a href="#citation">Citation</a></p>
@@ -20,7 +35,7 @@
 
 ## 📰 News
 
-- **2026-10-03:** Released the source code, inference guides, and full-suite evaluation workflows.
+- **2026-10-03:** Released the source code, deployment and batch-annotation guides, and full-suite evaluation workflows.
 - **2026-10-01:** We released the [GroundAnything](https://huggingface.co/GroundingPI/GroundAnything) and [GroundAnything-VLM](https://huggingface.co/GroundingPI/GroundAnything-VLM) model weights on Hugging Face.
 - **2026-09-30:** The [GroundAnything paper](https://arxiv.org/abs/2609.39600) is available on arXiv.
 
@@ -28,7 +43,7 @@
 
 ## 🧭 Contents
 
-[Highlights](#highlights) · [Demo](#demo) · [Models](#models) · [Installation](#installation) · [Quick Start](#quick-start) · [Tasks and Output Format](#tasks-and-output-format) · [Method and Inference Infrastructure](#method-and-inference-infrastructure) · [Evaluation](#evaluation) · [Training](#training) · [Results](#results) · [Documentation](#documentation) · [License](#license) · [Citation](#citation) · [Acknowledgement](#acknowledgement)
+[Highlights](#highlights) · [Demo](#demo) · [Models](#models) · [Installation](#installation) · [Deployment Options](#deployment-options) · [Quick Start](#quick-start) · [vLLM Deployment](#vllm-deployment) · [Batch Annotation](#batch-annotation) · [Tasks and Output Format](#tasks-and-output-format) · [Method and Inference Infrastructure](#method-and-inference-infrastructure) · [Evaluation](#evaluation) · [Training](#training) · [Results](#results) · [Documentation](#documentation) · [License](#license) · [Citation](#citation) · [Acknowledgement](#acknowledgement)
 
 <a id="highlights"></a>
 
@@ -42,7 +57,7 @@
 
 ## 🎬 Demo
 
-<p align="center"><a href="https://huggingface.co/GroundingPI/GroundAnything/resolve/d1819bbe01b5a16cebd67ecaca207d2696e3af59/assets/demo.mp4"><img src="https://huggingface.co/GroundingPI/GroundAnything/resolve/0f8e30894c3ca86378d01ae51ec69c217c78151b/assets/demo-poster.jpg" alt="Play the GroundAnything demo" width="100%" /></a></p>
+<p align="center"><a href="https://huggingface.co/GroundingPI/GroundAnything/resolve/d1819bbe01b5a16cebd67ecaca207d2696e3af59/assets/demo.mp4"><img src="docs/assets/demo-poster.jpg" alt="Play the GroundAnything demo" width="100%" /></a></p>
 
 [▶ Watch the demo](https://huggingface.co/GroundingPI/GroundAnything/resolve/d1819bbe01b5a16cebd67ecaca207d2696e3af59/assets/demo.mp4)
 
@@ -76,6 +91,20 @@ Already have a source checkout? Start with `cd GroundAnything`. Run subsequent c
 `requirements.txt` installs the lightweight HTTP client, visualization tools, and setup dependencies. Serving, training, and evaluation each use their own environment; `pip install -r requirements.txt` alone does not install the model runtime. The client does not load weights and requires no Torch installation.
 
 **Tested accelerators:** NVIDIA **B300, B200, H200, H800**, and **PPU**. Use the matching runtime for each accelerator. See [Environment Setup](environments/README.md) for installation details.
+
+<a id="deployment-options"></a>
+
+## 🧩 Deployment Options
+
+| Model | Backend | Use case | Guide |
+|:---|:---|:---|:---|
+| GroundAnything (DLM) | **Custom SGLang** | Entropy-guided parallel or self-speculative decoding | [DLM quick start](#quick-start) |
+| GroundAnything-VLM | **Custom SGLang** | Autoregressive grounding with the existing service | [VLM quick start](#groundanything-vlm-autoregressive-decoding) |
+| GroundAnything-VLM | **vLLM + Transformers backend** | An alternative autoregressive serving route | [GPU / PPU deployment](docs/VLLM.md) |
+
+Use the repository's patched engines and launchers. The new vLLM adapter is for **GroundAnything-VLM only** and has CPU-level checks; end-to-end accelerator validation is pending. DLM decoding stays on SGLang.
+
+All routes expose an **OpenAI-compatible image + text API** and produce structured visual grounding. Prompts cover referring expressions, object localization, text-region grounding, document layout, and point localization. See [Tasks and Output Format](#tasks-and-output-format) for the prompt and coordinate contract. For processing an image collection, start with [Batch Annotation](#batch-annotation).
 
 <a id="quick-start"></a>
 
@@ -174,6 +203,48 @@ For the VLM service, append `--base-url http://127.0.0.1:8102/v1 --model groundi
 </details>
 
 See [Examples](examples/README.md) and the [client implementation](grounding_anything/client.py) for more usage details.
+
+<a id="vllm-deployment"></a>
+
+## ⚡ vLLM Deployment
+
+**GroundAnything-VLM** also has an opt-in **vLLM Transformers-backend** adapter for autoregressive grounding. Its dedicated `.venv-vllm` environment uses **Linux x86_64 / Python 3.12**, a preinstalled accelerator-compatible **Torch / vLLM 0.18.x** runtime, and the bundled **Transformers 5.7.0 fork**. The default SGLang environment remains separate.
+
+For **NVIDIA GPUs**, run from the repository root:
+
+```bash
+hf download GroundingPI/GroundAnything-VLM --local-dir weights/vlm
+python3 run.py setup vllm --platform gpu
+python3 run.py serve --engine vllm --platform gpu
+```
+
+For **PPU**, run inside the matching vendor runtime image and replace `gpu` with `ppu` in both setup and serving commands. Skip setup if `.venv-vllm` is already prepared. Use the same `--venv` on both commands to select another fresh environment.
+
+The API is **`http://127.0.0.1:8102/v1`**, with model ID **`groundinganything-vlm`**. Stop an existing SGLang VLM service on that port before starting vLLM, or choose a different port in the vLLM release configuration. Check readiness in another terminal:
+
+```bash
+curl --fail http://127.0.0.1:8102/v1/models
+```
+
+Defaults are **BF16, eager execution, TP=1, one active sequence, 16,384 context tokens, and one image per request**. Custom requests must include **`skip_special_tokens: false`** and **`spaces_between_special_tokens: false`**. Evaluate with **GAM** mode using `configs/eval/vlm_vllm.yaml`.
+
+GroundAnything's **DLM entropy-guided and self-speculative decoders use the custom SGLang backend**; the vLLM route accepts only the separate VLM checkpoint. This new adapter has CPU-level checks; end-to-end accelerator validation is pending. See the [vLLM Deployment Guide](docs/VLLM.md) for GPU/PPU setup, a complete image request, and configuration details.
+
+<a id="batch-annotation"></a>
+
+## 🗂️ Batch Annotation
+
+Use the [JSONL batch guide](docs/BATCH_INFERENCE.md) to annotate image collections with per-image grounding prompts. The [batch example](examples/batch_predict.py) saves raw responses, parsed coordinates, completion status, and usage; successful items can be skipped when resuming the same inputs and request configuration.
+
+With a service running and your input manifest prepared:
+
+```bash
+python3 examples/batch_predict.py \
+  --input requests.jsonl --output predictions.jsonl \
+  --base-url http://127.0.0.1:8101/v1 --model groundinganything
+```
+
+The supplied serving profiles use **one active sequence**. Batch processing here means sequential image requests with durable output. For multiple accelerators, split the manifest across independent service replicas and use a separate output file per worker. Inspect truncated or invalid results before using predictions as annotations.
 
 <a id="tasks-and-output-format"></a>
 
@@ -353,6 +424,8 @@ Across the paper's 30 grounding benchmarks, **GroundAnything-VLM averages 72.42%
 |:---|:---|
 | [Environment Setup](environments/README.md) | Workflow environments and platform prerequisites |
 | [Inference](docs/INFERENCE.md) | Serving, model preparation, configuration, and reference backend |
+| [vLLM Deployment](docs/VLLM.md) | GPU / PPU setup, container starting point, and image API requests |
+| [Batch Annotation](docs/BATCH_INFERENCE.md) | Resumable JSONL predictions for image collections |
 | [Examples](examples/README.md) | Image prediction, JSON output, and visualization |
 | [Evaluation](eval/README.md) | Dataset setup, paper benchmark suite, execution, and results |
 | [Training](docs/TRAINING.md) | Training recipes, distributed settings, and checkpoints |

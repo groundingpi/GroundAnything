@@ -12,7 +12,7 @@ ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT / "scripts"))
 from config_contract import (relative as checked_relative, validate_native,
                              validate_tree, checkpoint_args, native_inputs, validate_argv, rl_command)
-TARGETS={'dlm-sglang': ['-m', 'infer.serve_sglang'], 'vlm-sglang': ['-m', 'infer.serve_sglang_vlm'], 'dlm-train': ['-m', 'train.dlm.train_dlm'], 'dlm-serve': ['-m', 'infer.dlm.qwen3_openai_server'], 'eval': ['-m', 'eval.eval_runner'], 'eval-yaml': ['scripts/evaluate.py'], 'rl-24': ['-m', 'train.rl.current.trainer'], 'rl-56': ['-m', 'train.rl.distributed.multiroute_56'], 'rl-64': ['-m', 'train.rl.distributed.multiroute_64']}
+TARGETS={'dlm-sglang': ['-m', 'infer.serve_sglang'], 'vlm-sglang': ['-m', 'infer.serve_sglang_vlm'], 'vlm-vllm': ['-m', 'infer.serve_vllm'], 'dlm-train': ['-m', 'train.dlm.train_dlm'], 'dlm-serve': ['-m', 'infer.dlm.qwen3_openai_server'], 'eval': ['-m', 'eval.eval_runner'], 'eval-yaml': ['scripts/evaluate.py'], 'rl-24': ['-m', 'train.rl.current.trainer'], 'rl-56': ['-m', 'train.rl.distributed.multiroute_56'], 'rl-64': ['-m', 'train.rl.distributed.multiroute_64']}
 
 def relative(value):
     return checked_relative(ROOT,value)

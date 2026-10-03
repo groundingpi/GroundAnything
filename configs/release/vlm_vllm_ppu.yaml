@@ -1,0 +1,18 @@
+entrypoint: vlm-vllm
+args:
+- --model
+- weights/vlm
+- --platform
+- ppu
+- --port
+- '8102'
+env:
+  HF_HUB_OFFLINE: '1'
+  TRANSFORMERS_OFFLINE: '1'
+  HF_HOME: outputs/hf
+  OMP_NUM_THREADS: '4'
+inputs:
+- weights/vlm
+- vendor/transformers
+outputs:
+- outputs/vllm-vlm

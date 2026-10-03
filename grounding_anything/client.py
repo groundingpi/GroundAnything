@@ -86,7 +86,8 @@ class GroundingAnything:
             raise ValueError("image must have a JPEG, PNG or WebP extension")
         encoded = base64.b64encode(path.read_bytes()).decode("ascii")
         body = {"model": self.model, "temperature": 0, "max_tokens": max_tokens,
-                "skip_special_tokens": False, "messages": [{"role": "user", "content": [
+                "skip_special_tokens": False, "spaces_between_special_tokens": False,
+                "messages": [{"role": "user", "content": [
                     {"type": "image_url", "image_url": {"url": f"data:{mime};base64,{encoded}"}},
                     {"type": "text", "text": prompt}]}]}
         headers = {"Content-Type": "application/json"}
