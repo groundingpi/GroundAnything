@@ -1,0 +1,6 @@
+task: gam_totaltext_Boxonly
+include: totaltext.yaml
+process_results: !function utils.process_results_boxonly
+metadata:
+  sample_count: 300
+  variant: boxonly

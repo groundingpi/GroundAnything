@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "scope": "selected-source-export",
+  "base": {
+    "repository": "https://github.com/huggingface/transformers",
+    "ref": "v5.7.0",
+    "commit": "6ffbb07f93d9e44457450d1150136309b0dc966b",
+    "archive_url": "https://codeload.github.com/huggingface/transformers/tar.gz/6ffbb07f93d9e44457450d1150136309b0dc966b",
+    "archive_sha256": "ae85a564cdb21de1bd6fe57550b01692435d3385763c548b990c76fe6e39cce3",
+    "relationship": "public comparison base; exact ancestry is not asserted"
+  },
+  "source_prefix": "",
+  "path_overrides": {
+    "LICENSE": "LICENSE"
+  },
+  "operations": {
+    "NOTICE.release": {
+      "op": "add"
+    },
+    "README.md": {
+      "op": "replace",
+      "base_sha256": "e0adc01455994c3012dafc6d600fe68c54e1c312b546240e40bf1232657ab86d"
+    },
+    "src/transformers/models/qwen3_5/configuration_qwen3_5.py": {
+      "op": "replace",
+      "base_sha256": "e2ca3e05c3f3e7ed2c4f452043bc33640c67a24799adb054ba24fab6badfbd8c"
+    },
+    "src/transformers/models/qwen3_5/modeling_qwen3_5.py": {
+      "op": "replace",
+      "base_sha256": "eff35b5e7039ffdfa1c01ec30a58f50c4279a5ae6d2eb159eb23c64dd7c02422"
+    },
+    "src/transformers/models/qwen3_vl/configuration_qwen3_vl.py": {
+      "op": "replace",
+      "base_sha256": "55d7e9b70090da98bec689f1623a73628c93304c974b87cbd11d10cc82a1da77"
+    },
+    "src/transformers/models/qwen3_vl/modeling_qwen3_vl.py": {
+      "op": "replace",
+      "base_sha256": "c37abc40a3744dc116cf1e06eceb7ff79bd384cfbfe0d41773f5efc074f31523"
+    },
+    "src/transformers/testing_utils.py": {
+      "op": "replace",
+      "base_sha256": "d2e254927ef3efe0752cf70dc32e47f1bba95236323c0362e4c09a7ab88035b5"
+    },
+    "src/transformers/utils/kernel_config.py": {
+      "op": "replace",
+      "base_sha256": "5bdec0f8461a5a87b832dc6786e3a7e85f1ef926052120133c4790e7cd70bb76"
+    },
+    "src/transformers/models/bertweet/tokenization_bertweet.py": {
+      "op": "replace",
+      "base_sha256": "db05407d929aff4bdd9541be082571ca0599c6b08a4ba3c084a26b26a3d6257b"
+    }
+  },
+  "replacement_source": "third_party/transformers.tar.gz",
+  "selection": "manifest dependencies entry files; unselected upstream files are omitted"
+}

@@ -1,0 +1,291 @@
+# DARE/verl is the executor; this is a standard causal multimodal GRPO run.
+# It deliberately does not inherit any DARE dLLM/JustGRPO actor or rollout.
+data:
+  tokenizer: null
+  use_shm: false
+  train_files:
+    - data/rl/train.jsonl
+  val_files:
+    - data/rl/train.jsonl
+  prompt_key: messages
+  reward_fn_key: rlv3_route
+  max_prompt_length: 8192
+  max_response_length: 1024
+  train_batch_size: 56
+  val_batch_size: null
+  return_raw_input_ids: true
+  return_raw_chat: false
+  return_full_prompt: false
+  shuffle: true
+  seed: 20260831
+  filter_overlong_prompts: false
+  filter_overlong_prompts_workers: 1
+  truncation: error
+  image_key: images
+  video_key: videos
+  trust_remote_code: true
+  gam_pad_to_batch_size: 56
+  custom_cls:
+    path: ./train/rl/branches/dare/dare_dataset.py
+    name: GAMCausalRLDataset
+
+actor_rollout_ref:
+  hybrid_engine: true
+  model:
+    path: weights/rl_causal
+    use_shm: false
+    # DARE/verl import_external_libs() accepts one module name, not an
+    # OmegaConf ListConfig.  Keep this scalar so every Ray actor imports the
+    # GAM trainability adapter before loading the model.
+    external_lib: train.rl.branches.dare.causal_model_adapter
+    override_config:
+      use_cache: false
+    enable_gradient_checkpointing: false
+    enable_activation_offload: false
+    use_remove_padding: false
+    lora_rank: 0
+    lora_alpha: 16
+    target_modules: all-linear
+    use_liger: false
+    use_fused_kernels: false
+    trust_remote_code: true
+  actor:
+    strategy: fsdp2
+    ppo_mini_batch_size: 56
+    ppo_micro_batch_size: null
+    ppo_micro_batch_size_per_gpu: 1
+    use_dynamic_bsz: false
+    ppo_max_token_len_per_gpu: 10240
+    grad_clip: 1.0
+    clip_ratio: 0.2
+    clip_ratio_low: 0.2
+    clip_ratio_high: 0.2
+    clip_ratio_c: 3.0
+    loss_agg_mode: seq-mean-token-mean
+    entropy_coeff: 0.0
+    use_kl_loss: false
+    use_torch_compile: false
+    kl_loss_coef: 0.0
+    kl_loss_type: low_var_kl
+    ppo_epochs: 1
+    shuffle: false
+    ulysses_sequence_parallel_size: 1
+    checkpoint:
+      contents: [model, optimizer, extra, hf_model]
+    optim:
+      lr: 2.0e-6
+      betas: [0.9, 0.999]
+      lr_warmup_steps: 0
+      lr_warmup_steps_ratio: 0.0
+      min_lr_ratio: 1.0
+      num_cycles: 0.5
+      warmup_style: constant
+      total_training_steps: -1
+      weight_decay: 0.0
+    fsdp_config:
+      wrap_policy:
+        min_num_params: 0
+        # Transformers 5 may expose the resolved no-split classes as a set.
+        # DARE's FSDP2 helper expects an ordered sequence and indexes element
+        # zero, so pin the two exact GAM transformer layer names explicitly.
+        transformer_layer_cls_to_wrap:
+          - MoonViTEncoderLayer
+          - Qwen3DecoderLayer
+      param_offload: false
+      optimizer_offload: false
+      offload_policy: false
+      reshard_after_forward: true
+      fsdp_size: -1
+      mixed_precision:
+        param_dtype: bf16
+        reduce_dtype: fp32
+        buffer_dtype: bf16
+  ref:
+    strategy: fsdp2
+    fsdp_config:
+      param_offload: false
+      reshard_after_forward: true
+      wrap_policy:
+        min_num_params: 0
+        transformer_layer_cls_to_wrap:
+          - MoonViTEncoderLayer
+          - Qwen3DecoderLayer
+    use_torch_compile: false
+    log_prob_micro_batch_size: null
+    log_prob_micro_batch_size_per_gpu: 1
+    log_prob_use_dynamic_bsz: false
+    log_prob_max_token_len_per_gpu: 10240
+    ulysses_sequence_parallel_size: 1
+  rollout:
+    name: sglang
+    mode: sync
+    chat_scheduler: null
+    temperature: 0.7
+    top_k: -1
+    top_p: 1.0
+    presence_penalty: 0.0
+    frequency_penalty: 0.0
+    repetition_penalty: 1.0
+    prompt_length: 8192
+    response_length: 1024
+    dtype: bfloat16
+    gpu_memory_utilization: 0.36
+    ignore_eos: false
+    enforce_eager: true
+    free_cache_engine: true
+    load_format: dummy_dtensor
+    layered_summon: false
+    tensor_model_parallel_size: 1
+    max_num_batched_tokens: 16384
+    max_model_len: 9216
+    max_num_seqs: 16
+    max_running_requests: 16
+    log_prob_micro_batch_size: null
+    log_prob_micro_batch_size_per_gpu: 1
+    log_prob_use_dynamic_bsz: false
+    log_prob_max_token_len_per_gpu: 10240
+    disable_log_stats: false
+    enable_chunked_prefill: true
+    do_sample: true
+    n: 8
+    disable_cuda_graph: true
+    attention_backend: triton
+    engine_kwargs:
+      sglang:
+        attention_backend: triton
+    val_kwargs:
+      top_k: -1
+      top_p: 1.0
+      temperature: 0.0
+      n: 1
+      do_sample: false
+    multi_turn:
+      enable: false
+      max_turns: null
+      tool_config_path: null
+      format: chatml
+
+critic:
+  rollout_n: 8
+  strategy: fsdp2
+  optim:
+    lr: 1.0e-5
+    lr_warmup_steps_ratio: 0.0
+    min_lr_ratio: 1.0
+    warmup_style: constant
+    total_training_steps: -1
+    weight_decay: 0.0
+  model:
+    path: weights/unused-grpo-critic
+    use_shm: false
+    tokenizer_path: null
+    override_config: {}
+    external_lib: null
+    enable_gradient_checkpointing: false
+    enable_activation_offload: false
+    use_remove_padding: false
+    trust_remote_code: false
+    fsdp_config:
+      param_offload: false
+      optimizer_offload: false
+      offload_policy: false
+      reshard_after_forward: true
+      wrap_policy:
+        min_num_params: 0
+      fsdp_size: -1
+  ppo_mini_batch_size: 56
+  ppo_micro_batch_size: null
+  ppo_micro_batch_size_per_gpu: 1
+  forward_micro_batch_size: null
+  forward_micro_batch_size_per_gpu: 1
+  use_dynamic_bsz: false
+  ppo_max_token_len_per_gpu: 20480
+  forward_max_token_len_per_gpu: 20480
+  ulysses_sequence_parallel_size: 1
+  ppo_epochs: 1
+  shuffle: false
+  grad_clip: 1.0
+  cliprange_value: 0.5
+  loss_agg_mode: seq-mean-token-mean
+  checkpoint:
+    contents: [model, optimizer, extra]
+
+reward_model:
+  enable: false
+  strategy: fsdp2
+  model:
+    input_tokenizer: null
+    path: weights/unused-reward-model
+    use_shm: false
+    external_lib: null
+    use_remove_padding: false
+    use_fused_kernels: false
+    trust_remote_code: false
+    fsdp_config:
+      wrap_policy:
+        min_num_params: 0
+      param_offload: false
+      reshard_after_forward: true
+      fsdp_size: -1
+  micro_batch_size: null
+  micro_batch_size_per_gpu: 1
+  max_length: null
+  ulysses_sequence_parallel_size: 1
+  use_dynamic_bsz: false
+  forward_max_token_len_per_gpu: 20480
+  reward_manager: gam_batch
+  reward_kwargs: {}
+  launch_reward_fn_async: true
+  sandbox_fusion:
+    url: null
+    max_concurrent: 64
+
+custom_reward_function:
+  path: null
+  name: compute_score
+
+algorithm:
+  gamma: 1.0
+  lam: 1.0
+  adv_estimator: grpo
+  norm_adv_by_std_in_grpo: true
+  use_kl_in_reward: false
+  kl_penalty: kl
+  kl_ctrl:
+    type: fixed
+    kl_coef: 0.0
+    horizon: 10000
+    target_kl: 0.1
+  use_pf_ppo: false
+  pf_ppo:
+    reweight_method: pow
+    weight_pow: 2.0
+
+trainer:
+  balance_batch: true
+  total_epochs: 1
+  total_training_steps: null
+  project_name: groundinganything_rl
+  experiment_name: dare_causal_grpo_h80056
+  logger: [console]
+  log_val_generations: 0
+  rollout_data_dir: null
+  validation_data_dir: null
+  nnodes: 7
+  n_gpus_per_node: 8
+  save_freq: 25
+  resume_mode: disable
+  resume_from_path: null
+  val_before_train: false
+  test_freq: -1
+  critic_warmup: 0
+  default_hdfs_dir: null
+  del_local_ckpt_after_load: false
+  default_local_dir: outputs/rl_causal
+  max_actor_ckpt_to_keep: 3
+  max_critic_ckpt_to_keep: 1
+  ray_wait_register_center_timeout: 1800
+  device: cuda
+
+ray_init:
+  num_cpus: 32

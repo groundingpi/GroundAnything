@@ -1,0 +1,69 @@
+mode: DLM
+meta:
+  experiment: dlm-general
+  description: DLM training example with two steps and CPU optimizer offload.
+model:
+  family: groundinganything_qwen3
+  path: weights/base_model
+  output_dir: outputs/smoke/train
+data:
+  sampling_manifest: data/smoke/selection/manifest.json
+  sampled_rows: 8
+training:
+  num_train_epochs: 1
+  per_device_train_batch_size: 1
+  gradient_accumulation_steps: 1
+  expected_global_batch_size: 1
+  learning_rate: 2.0e-05
+  backbone_learning_rate: 2.0e-05
+  projector_learning_rate: 2.0e-05
+  vision_learning_rate: 2.0e-06
+  lr_scheduler_type: cosine
+  warmup_ratio: 0.03
+  optim: adamw_torch_fused
+  adam_beta1: 0.9
+  adam_beta2: 0.95
+  adam_epsilon: 1.0e-08
+  weight_decay: 0.1
+  max_grad_norm: 1.0
+  freeze_vision_encoder: true
+  gradient_checkpointing: true
+  vision_gradient_checkpointing: false
+  language_checkpoint_stride: 0
+  padding_free_packing: false
+  packing_linear_kernel: chunk
+  packing_lm_head_loss_backend: fused
+  packing_lm_head_loss_chunk_tokens: 128
+  packing_activation_cpu_offload: false
+  packing_offload_threshold_mib: 56
+  packing_offload_min_tokens: 0
+  packing_offload_layer_stride: 3
+  packing_offload_pin_memory: false
+  allocator_empty_cache_steps: 0
+  block_size: 32
+  block_annealing: false
+  minimum_noise_level: 0.0
+  casuallossenable: true
+  mdm_loss_weight: 0.5
+  causal_loss_weight: 0.5
+  vision_attn_implementation: eager
+  logging_steps: 1
+  save_strategy: steps
+  save_steps: 1
+  save_final_full_checkpoint: true
+  dataloader_num_workers: 0
+  seed: 32
+  data_seed: 32
+  max_steps: 2
+runtime:
+  expected_nodes: 1
+  expected_gpus_per_node: 1
+  expected_world_size: 1
+  image_max_token_num: 512
+  max_length: 2048
+  max_joint_length: 4096
+  selected_tail_actual_length_audit: data/smoke/lengths/with_workload.json
+  selected_image_integrity_audit: data/smoke/images_audit/report.json
+  selected_response_block_audit: data/smoke/responses/summary.json
+  minimum_over_32_response_ratio: 0.4
+  deepspeed_config: configs/train/zero2_cpu_smoke.json

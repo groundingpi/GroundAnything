@@ -1,0 +1,17 @@
+entrypoint: dlm-serve
+args: []
+env:
+  MODEL_VERSION: groundinganything
+  DLM_INFERENCE_MODE: speculative
+  DLM_MAX_NEW_TOKENS_CAP: '8192'
+  DLM_MAX_MODEL_LEN: '16384'
+  BASE_MODEL: weights/base_model
+  DLM_CHECKPOINT: weights/dlm
+  PORT: 8101
+  DLM_INFERENCE_BLOCK_SIZE: 32
+  DLM_DEFAULT_SKIP_SPECIAL_TOKENS: 0
+  DLM_DEFAULT_SPACES_BETWEEN_SPECIAL_TOKENS: 0
+inputs:
+- weights/base_model
+- weights/dlm
+outputs: []

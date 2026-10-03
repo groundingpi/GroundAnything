@@ -1,0 +1,29 @@
+schema_version: 1
+profiles:
+  train:
+    requirements: requirements/train.txt
+    snapshots:
+    - transformers
+    accelerator_packages:
+    - torch @ https://download.pytorch.org/whl/cu129/torch-2.10.0%2Bcu129-cp312-cp312-manylinux_2_28_x86_64.whl#sha256=a3c703e74a88cccfeb4b1807c49d563a0a73793ba72d4fa035d4ac5885f3aefd
+    - torchvision @ https://download.pytorch.org/whl/cu129/torchvision-0.25.0%2Bcu129-cp312-cp312-manylinux_2_28_x86_64.whl#sha256=5d741dff079cd9b9dfe690f2f14ba6db22bd9415838726ab795c378a12adbc3b
+    source_extensions:
+    - flash-attn==2.8.3.post1
+    build_env:
+      TORCH_CUDA_ARCH_LIST: '9.0'
+      MAX_JOBS: '8'
+      NVCC_THREADS: '2'
+      FLASH_ATTENTION_FORCE_BUILD: 'TRUE'
+      FLASH_ATTN_CUDA_ARCHS: '90'
+    platform: Linux x86_64
+  eval:
+    snapshots:
+    - lmms_eval
+    requirements: requirements/eval.txt
+    platform: Linux x86_64
+  serve:
+    requirements: requirements/serve.txt
+    snapshots:
+    - sglang
+    post_install_overrides:
+    - nvidia-cudnn-cu12==9.16.0.29

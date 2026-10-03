@@ -1,0 +1,18 @@
+entrypoint: dlm-sglang
+args:
+- --model
+- weights/dlm_bundle
+- --decoder
+- causal
+- --output
+- outputs/sglang/causal
+- --port
+- '8101'
+env:
+  HF_HOME: outputs/hf
+  OMP_NUM_THREADS: '4'
+inputs:
+- weights/dlm_bundle
+- vendor/sglang
+outputs:
+- outputs/sglang/causal

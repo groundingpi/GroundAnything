@@ -1,0 +1,26 @@
+schema_version: 1
+claim: DLM training stages and checkpoint initialization.
+stages:
+- stage: general
+  launch: configs/release/general_train.yaml
+  sampled_rows: 2997407
+  epochs: 2
+  initialization: VLM base
+- stage: specialist
+  launch: configs/release/specialist_train.yaml
+  sampled_rows: 29996394
+  epochs: 2
+  initialization: general DLM weights, fresh optimizer
+- stage: sft1
+  launch: configs/release/sft1_train.yaml
+  sampled_rows: 4739428
+  epochs: 1
+  initialization: specialist DLM weights, fresh optimizer
+- stage: sft2
+  launch: configs/release/sft2_train.yaml
+  sampled_rows: 302678
+  epochs: 1
+  initialization: sft1 DLM weights, fresh optimizer
+rl:
+  enabled_algorithm: RLV2
+  included_in_default_chain: false

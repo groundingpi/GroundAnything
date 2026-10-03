@@ -1,0 +1,6 @@
+task: gam_lvis_Labelless
+include: lvis.yaml
+process_results: !function utils.process_results_labelless
+metadata:
+  sample_count: 19626
+  variant: labelless

@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "grounding-anything"
+version = "0.1.0"
+description = "GroundAnything spatial grounding HTTP client and source workflows"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = ["PyYAML>=6,<7"]
+
+[project.optional-dependencies]
+visualization = ["Pillow>=10"]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["grounding_anything*"]
+namespaces = false
+

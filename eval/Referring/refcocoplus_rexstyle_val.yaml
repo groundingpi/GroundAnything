@@ -1,0 +1,3 @@
+task: gam_refcocoplus
+dataset_path: ${EVAL_DATA:refcocoplus}
+include: _refcoco_template.yaml

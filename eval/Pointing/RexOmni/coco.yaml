@@ -1,0 +1,6 @@
+task: gam_rex_point_coco
+include: _point_template.yaml
+dataset_kwargs:
+  data_files: ${EVAL_DATA:gam_rex_point_coco}
+metadata:
+  sample_count: 4950

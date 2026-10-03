@@ -1,0 +1,16 @@
+entrypoint: vlm-sglang
+args:
+- --model
+- weights/vlm
+- --output
+- outputs/sglang/vlm
+- --port
+- '8102'
+env:
+  HF_HOME: outputs/hf
+  OMP_NUM_THREADS: '4'
+inputs:
+- weights/vlm
+- vendor/sglang
+outputs:
+- outputs/sglang/vlm

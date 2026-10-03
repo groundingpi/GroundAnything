@@ -1,0 +1,37 @@
+dataset_path: eval/rexomni_jsonl.py
+output_type: generate_until
+test_split: train
+doc_to_visual: !function utils.doc_to_visual
+doc_to_text: !function utils.doc_to_text
+doc_to_target: gt
+process_results: !function utils.process_results
+metric_list:
+  - metric: recall_iou_50
+    aggregation: !function utils.agg_recall
+    higher_is_better: true
+  - metric: recall_iou_95
+    aggregation: !function utils.agg_recall
+    higher_is_better: true
+  - metric: recall_mean_iou
+    aggregation: !function utils.agg_mean_iou
+    higher_is_better: true
+  - metric: precision_iou_50
+    aggregation: !function utils.agg_precision
+    higher_is_better: true
+  - metric: precision_iou_95
+    aggregation: !function utils.agg_precision
+    higher_is_better: true
+  - metric: precision_mean_iou
+    aggregation: !function utils.agg_mean_iou
+    higher_is_better: true
+  - metric: f1_iou_50
+    aggregation: !function utils.agg_f1
+    higher_is_better: true
+  - metric: f1_iou_95
+    aggregation: !function utils.agg_f1
+    higher_is_better: true
+  - metric: F1mIoU
+    aggregation: !function utils.agg_f1_mean_iou
+    higher_is_better: true
+metadata:
+  version: '1.0'

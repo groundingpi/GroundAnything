@@ -1,0 +1,25 @@
+# Explicit A0 compatibility route.  The established GAMHierarchyBlock remains
+# the authoritative baseline; this file exists for plumbing regression only.
+block_size: 32
+sub_block_size: 4
+denoise_steps: 4
+token_shift: 1
+temperature: 0.0
+top_p: 1.0
+top_k: 0
+acceptance_policy: confidence
+confidence_threshold: 0.99
+entropy_threshold: null
+position_penalty: 0.0
+repetition_mode: none
+repetition_weight: 0.0
+repetition_ngram_size: 4
+repetition_window: 128
+repetition_block_size: 16
+enable_eos_early_stop: false
+eos_require_top1: true
+eos_confidence_threshold: null
+eos_entropy_threshold: null
+eos_stability_steps: 1
+expected_cardinality: null
+legacy_force_fill_all: true

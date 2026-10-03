@@ -1,0 +1,6 @@
+task: gam_lvis
+include: _box_template.yaml
+dataset_kwargs:
+  data_files: ${EVAL_DATA:gam_lvis}
+metadata:
+  sample_count: 19626

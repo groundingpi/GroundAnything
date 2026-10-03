@@ -1,0 +1,24 @@
+task: gam_sroie
+include: _scene_text_template.yaml
+dataset_kwargs:
+  data_files:
+    validation: ${EVAL_DATA:gam_sroie}
+process_docs: !function utils.build_sroie_dataset
+metric_list:
+  - metric: loose_match_f1_iou_50
+    aggregation: !function utils.aggregate_sroie_loose_50
+    higher_is_better: true
+  - metric: loose_match_f1_iou_75
+    aggregation: !function utils.aggregate_sroie_loose_75
+    higher_is_better: true
+  - metric: loose_match_f1_iou_95
+    aggregation: !function utils.aggregate_sroie_loose_95
+    higher_is_better: true
+  - metric: loose_match_F1mIoU
+    aggregation: !function utils.aggregate_sroie_loose_mean
+    higher_is_better: true
+  - metric: parse_error_rate
+    aggregation: !function utils.aggregate_parse_error_rate
+    higher_is_better: false
+metadata:
+  sample_count: 360

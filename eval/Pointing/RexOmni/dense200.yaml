@@ -1,0 +1,6 @@
+task: gam_rex_point_dense200
+include: _point_template.yaml
+dataset_kwargs:
+  data_files: ${EVAL_DATA:gam_rex_point_dense200}
+metadata:
+  sample_count: 200

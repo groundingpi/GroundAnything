@@ -1,0 +1,6 @@
+task: gam_hiertext_Boxonly
+include: hiertext.yaml
+process_results: !function utils.process_results_boxonly
+metadata:
+  sample_count: 1723
+  variant: boxonly

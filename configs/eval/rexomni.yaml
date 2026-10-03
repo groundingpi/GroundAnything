@@ -1,0 +1,14 @@
+mode: REXOMNI
+model_path: weights/model
+model_type: qwen3vl
+api_url: http://127.0.0.1:8000/v1
+data_root: data/eval
+datasets: configs/datasets.yaml
+output_root: outputs/eval
+tasks:
+- gam_refcocog_val
+run_id: rexomni_smoke_001
+limit: 8
+concurrency: 4
+base_port: 12345
+rex_tokenizer_path: weights/rex-tokenizer

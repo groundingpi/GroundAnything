@@ -1,0 +1,8 @@
+# Optional Conda bootstrap for the client and setup commands.
+# Install requirements.txt after activating; use run.py setup for each workflow.
+name: grounding-anything
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - pip

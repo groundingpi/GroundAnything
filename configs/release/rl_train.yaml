@@ -1,0 +1,27 @@
+entrypoint: rl-24
+native_config: configs/rl/default.yaml
+args:
+- --model-path
+- weights/base_model
+- --initial-checkpoint
+- weights/dlm
+- --output-dir
+- outputs/rl
+- --run-kind
+- formal
+- --stable-gate
+- outputs/rl/stable_gate.json
+- --final-gate
+- outputs/rl/final_gate.json
+env: {}
+inputs:
+- weights/base_model
+- weights/dlm
+outputs:
+- outputs/rl
+distributed:
+  nproc_per_node: 8
+  nnodes: 3
+  node_rank: 0
+  master_addr: 127.0.0.1
+  master_port: 29500

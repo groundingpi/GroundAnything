@@ -1,0 +1,73 @@
+mode: DLM
+meta:
+  experiment: dlm-sft1
+  description: DLM sft1 training configuration.
+model:
+  family: groundinganything_qwen3
+  path: weights/base_model
+  output_dir: outputs/sft1
+data:
+  sampling_manifest: data/sft1/sampling/manifest.json
+  packing_manifest: data/sft1/packing/manifest.json
+  sampled_rows: 4739428
+training:
+  training_profile: dlm_posttrain_sft
+  num_train_epochs: 1
+  per_device_train_batch_size: 32
+  validated_large_batch_size: 32
+  gradient_accumulation_steps: 1
+  expected_global_batch_size: 2048
+  learning_rate: 7.0e-06
+  backbone_learning_rate: 7.0e-06
+  projector_learning_rate: 2.0e-06
+  vision_learning_rate: 7.0e-07
+  lr_scheduler_type: cosine_with_min_lr
+  lr_scheduler_kwargs:
+    min_lr_rate: 0.1
+  warmup_ratio: 0.03
+  optim: adamw_torch_fused
+  adam_beta1: 0.9
+  adam_beta2: 0.95
+  adam_epsilon: 1.0e-08
+  weight_decay: 0.1
+  max_grad_norm: 1.0
+  freeze_vision_encoder: false
+  freeze_projector: false
+  gradient_checkpointing: true
+  vision_gradient_checkpointing: true
+  language_checkpoint_stride: 0
+  packing_language_checkpoint_stride: 1
+  padding_free_packing: true
+  packing_linear_kernel: chunk
+  packing_lm_head_loss_backend: fused
+  packing_lm_head_loss_chunk_tokens: 128
+  packing_activation_cpu_offload: false
+  packing_offload_threshold_mib: 56
+  packing_offload_min_tokens: 0
+  packing_offload_layer_stride: 3
+  packing_offload_pin_memory: false
+  allocator_empty_cache_steps: 5
+  block_size: 32
+  block_annealing: false
+  minimum_noise_level: 0.0
+  casuallossenable: true
+  mdm_loss_weight: 0.5
+  causal_loss_weight: 0.5
+  vision_attn_implementation: flash_attention_2
+  logging_steps: 10
+  save_strategy: steps
+  save_steps: 500
+  save_final_full_checkpoint: true
+  dataloader_num_workers: 2
+  seed: 42
+  data_seed: 42
+runtime:
+  expected_nodes: 8
+  expected_gpus_per_node: 8
+  expected_world_size: 64
+  image_max_token_num: 1024
+  max_length: 8192
+  max_joint_length: 16384
+  selected_tail_actual_length_audit: data/sft1/audits/selected_tail_actual_length_audit.json
+  selected_image_integrity_audit: data/sft1/audits/selected_image_integrity_audit.json
+  deepspeed_config: ./train/dlm/deepspeed_zero1_hf_optimizer_bucket100m.json
