@@ -33,6 +33,7 @@
 
 ## 📰 News
 
+- **2026-10-04:** Released the [project webpage](https://groundingpi.github.io/groundanything/).
 - **2026-10-03:** Released the source code, deployment and batch-annotation guides, and full-suite evaluation workflows.
 - **2026-10-01:** We released the [GroundAnything](https://huggingface.co/GroundingPI/GroundAnything) and [GroundAnything-VLM](https://huggingface.co/GroundingPI/GroundAnything-VLM) model weights on Hugging Face.
 - **2026-09-30:** The [GroundAnything paper](https://arxiv.org/abs/2609.39600) is available on arXiv.
