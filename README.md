@@ -6,6 +6,7 @@
   <a href="#highlights"><img src="https://img.shields.io/badge/%E2%9C%A8%20Diffusion%20Decoding-26734d?style=for-the-badge" alt="✨ Diffusion Decoding" /></a>
   <a href="#quick-start"><img src="https://img.shields.io/badge/%E2%9A%A1%20Fast%20Inference-yellow?style=for-the-badge" alt="⚡ Fast Inference" /></a>
   <a href="#highlights"><img src="https://img.shields.io/badge/%E2%9A%A1%20Entropy--guided-cb8625?style=for-the-badge" alt="⚡ Entropy-guided" /></a>
+  <br />
   <a href="#highlights"><img src="https://img.shields.io/badge/%F0%9F%A7%A9%20Parallel%20Decoding-367ab5?style=for-the-badge" alt="🧩 Parallel Decoding" /></a>
   <a href="#highlights"><img src="https://img.shields.io/badge/%F0%9F%8E%AF%20Multitask%20Grounding-7050ad?style=for-the-badge" alt="🎯 Multitask Grounding" /></a>
 </p>
