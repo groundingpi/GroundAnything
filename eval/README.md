@@ -4,7 +4,7 @@
 
 This is the canonical guide for the **30-benchmark suite** used in the GroundAnything paper. Run all commands from the repository root.
 
-[Setup](#setup) · [Modes](#modes) · [Full suite](#full-suite) · [Check and run](#run) · [Outputs](#outputs)
+[Setup](#setup) · [Data](#data) · [Modes](#modes) · [Full suite](#full-suite) · [Check and run](#run) · [Outputs](#outputs)
 
 <a id="setup"></a>
 
@@ -19,7 +19,15 @@ python3 run.py setup eval
 
 Setup installs the bundled evaluation engine and its dependencies. Serving and evaluation use separate environments. Reuse an existing evaluation environment; the installer does not overwrite it. See [Environment Setup](../environments/README.md).
 
-Download the model and prepare serving through the [repository Quick Start](../README.md#quick-start). Start the matching service in another terminal and keep it running throughout evaluation.
+The evaluation profile pins **PyArrow 21.0.0**, which was tested with the released Parquet files. PyArrow 19.0.0 fails on some RefSpatial/RoboSpatial files with `Repetition level histogram size mismatch`. To update an existing evaluation environment, run:
+
+```bash
+.venv-eval/bin/python -m pip install "pyarrow==21.0.0"
+```
+
+This pin is specific to evaluation; training and serving keep their own dependencies. The data files do not need to be re-encoded.
+
+Download the model and prepare serving through the [repository Quick Start](../README.md#quick-start). Start the matching service in another terminal when ready to evaluate and keep it running throughout the run. Data preparation and checks below do not require model weights, a GPU or a running service.
 
 | Checkpoint / decoding | Start the prepared service | Evaluation template | API base URL | API model ID |
 |:---|:---|:---|:---|:---|
@@ -35,7 +43,17 @@ The main GroundAnything benchmark tables use **entropy-guided decoding**. Self-s
 
 ## 📦 Evaluation data
 
-[Grounding-EvalData](https://huggingface.co/datasets/Skywalker0410/Grounding-EvalData)
+Download [Grounding-EvalData](https://huggingface.co/datasets/Skywalker0410/Grounding-EvalData), which supplies the evaluation inputs for GroundingPI's **34 entries** and GroundAnything's **30-entry subset**. Install the download utility in your chosen download environment:
+
+```bash
+python3 -m pip install -U huggingface_hub
+hf download Skywalker0410/Grounding-EvalData \
+  --repo-type dataset --local-dir /absolute/path/to/Grounding-EvalData
+```
+
+The downloaded directory is the **bundle**: root data archives, `_annotations/`, source notices and verification manifests. Use a separate directory for extracted data. **Keep both directories**: the generated path configuration refers to loose annotations in the bundle as well as extracted images and Parquet files. Moving either directory requires a new local path configuration.
+
+The [preparation command below](#full-suite) verifies the bundle, unpacks it and writes `configs/datasets.local.yaml` plus a full-suite evaluation recipe. It preserves the shipped configuration and source data, reuses identical files, and refuses to overwrite different existing files or configurations. Preserve or rename a conflicting local configuration before generating another one. Original dataset [usage terms](https://huggingface.co/datasets/Skywalker0410/Grounding-EvalData/blob/main/LICENSE) and upstream source conditions remain applicable.
 
 <a id="modes"></a>
 
@@ -76,79 +94,50 @@ The twelve excluded recipes are the four `*_Labelless` and four `*_Boxonly` vari
 
 The RefCOCO family entry `gam_refcocog` is distinct from `gam_refcocog_val` and `gam_refcocog_test`. RefCOCO family and RefSpatial averages in paper tables summarize their component tasks; they are not additional tasks.
 
-Run this block from the repository root. It checks the explicit task list and creates local full-suite configurations from the shipped templates, leaving the original templates unchanged.
+The named suite is `groundanything30`; its exact task list is stored in [configs/eval/suites.json](../configs/eval/suites.json). From the repository root, prepare the downloaded bundle and generate the recipe matching your service. For entropy-guided decoding:
 
 ```bash
-python3 - <<'PY'
-from datetime import datetime, timezone
-from pathlib import Path
-import json
-import uuid
-import yaml
-
-tasks = [
-    "gam_coco",
-    "gam_lvis",
-    "gam_dense200",
-    "gam_visdrone",
-    "gam_refcocog_val",
-    "gam_refcocog_test",
-    "gam_refcoco",
-    "gam_refcocog",
-    "gam_refcocoplus",
-    "gam_rex_point_refcocog_val",
-    "gam_rex_point_refcocog_test",
-    "gam_rex_point_coco",
-    "gam_rex_point_lvis",
-    "gam_rex_point_dense200",
-    "gam_rex_point_visdrone",
-    "gam_refspatial_location",
-    "gam_refspatial_placement",
-    "gam_refspatial_unseen",
-    "gam_robospatial_context",
-    "gam_screenspot_pro",
-    "gam_screenspot_v2",
-    "gam_osworld_g",
-    "gam_hiertext",
-    "gam_icdar2015",
-    "gam_totaltext",
-    "gam_sroie",
-    "gam_doclaynet",
-    "gam_m6doc",
-    "gam_fsc147",
-    "gam_visual_dense200",
-]
-assert len(tasks) == 30 and len(set(tasks)) == 30
-inventory = json.loads(Path("configs/eval/tasks.json").read_text())
-assert set(tasks) <= set(inventory), "Unknown task ID"
-
-recipes = [
-    ("dlm.yaml", "full_suite_denoise.yaml", "groundanything_denoise_full30"),
-    ("dlm_speculative.yaml", "full_suite_speculative.yaml", "groundanything_speculative_full30"),
-    ("vlm.yaml", "full_suite_vlm.yaml", "groundanything_vlm_full30"),
-]
-stamp = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S") + "_" + uuid.uuid4().hex[:8]
-for source_name, output_name, label in recipes:
-    source = Path("configs/eval") / source_name
-    output = Path("configs/eval") / output_name
-    config = yaml.safe_load(source.read_text())
-    config.update(
-        mode="GAM",
-        tasks=tasks,
-        limit=None,
-        run_id=f"{label}_{stamp}",
-    )
-    with output.open("x", encoding="utf-8") as handle:
-        yaml.safe_dump(config, handle, sort_keys=False)
-    print(output, "run_id=" + config["run_id"])
-PY
+python3 scripts/prepare_eval_data.py \
+  --bundle /absolute/path/to/Grounding-EvalData \
+  --data-root /absolute/path/to/grounding-eval-data \
+  --suite groundanything30 \
+  --template configs/eval/dlm.yaml \
+  --output configs/eval/full30_denoise.local.yaml
 ```
 
-The block refuses to overwrite existing generated configurations. For a later run, edit the configuration's `run_id` to a fresh value or choose a new output filename. Existing result directories are never reused.
+For the other routes, use the same command with the corresponding template and a separate output filename:
 
-Set `data_root` in each generated configuration and update `configs/datasets.yaml` for your local data locations. Verify `model_path`, `api_url`, and `model_id` against the running service. Keep model/output paths project-relative, retain `service_contract: openai`, and keep **`limit: null`** for the full suite. The original templates use `limit: 8` for a small smoke run.
+| Service | `--template` | `--output` |
+|:---|:---|:---|
+| Entropy-guided DLM | `configs/eval/dlm.yaml` | `configs/eval/full30_denoise.local.yaml` |
+| Self-speculative DLM | `configs/eval/dlm_speculative.yaml` | `configs/eval/full30_speculative.local.yaml` |
+| GroundAnything-VLM | `configs/eval/vlm.yaml` | `configs/eval/full30_vlm.local.yaml` |
 
-Keep `decoder: denoise` for entropy-guided evaluation and `decoder: speculative` for self-speculative evaluation. The VLM configuration has no `decoder` field. Do not add a global `max_tokens` override to the entropy-guided recipe.
+The helper selects all 30 tasks, sets `mode: GAM` and `limit: null`, assigns a fresh `run_id`, and uses `configs/datasets.local.yaml`. It retains each template's model, service and decoder settings. Verify `model_path`, `api_url` and `model_id` against your installation. Evaluation configuration, model and output paths remain relative to the code checkout; data paths may be absolute.
+
+The shipped templates remain **8-sample smoke tests**. To select the full suite at runtime, pass `--suite groundanything30` to `run.py eval`; this uses the named task list, removes the smoke limit and creates a fresh run ID. Keep `decoder: denoise` for entropy-guided evaluation and `decoder: speculative` for self-speculative evaluation. The VLM recipe has no `decoder` field. Do not add a global `max_tokens` override to the entropy-guided recipe.
+
+<a id="data-checks"></a>
+
+### Check the prepared data
+
+Run the data checker independently of model setup. Its basic check validates the required file inventory, sizes and annotation references:
+
+```bash
+python3 scripts/check_eval_data.py \
+  --bundle /absolute/path/to/Grounding-EvalData \
+  --data-root /absolute/path/to/grounding-eval-data
+```
+
+For full content hashes and image, Parquet and mask readability, use `--deep` in an environment with Pillow and PyArrow. The evaluation environment includes these dependencies:
+
+```bash
+.venv-eval/bin/python scripts/check_eval_data.py \
+  --bundle /absolute/path/to/Grounding-EvalData \
+  --data-root /absolute/path/to/grounding-eval-data --deep
+```
+
+A separate lightweight checking environment only needs `Pillow` and `pyarrow==21.0.0` for deep checks; no model runtime is required. You can also append `--deep-check` to the preparation command when running it with these dependencies installed. Deep validation reads the supplied data without rewriting it, including RefSpatial's external masks and RoboSpatial's `mask_b64`. Data validation does not run model inference or reproduce benchmark scores.
 
 <a id="run"></a>
 
@@ -158,22 +147,22 @@ Validate the generated configuration and inspect `missing_inputs` before sending
 
 ```bash
 .venv-eval/bin/python scripts/evaluate.py \
-  configs/eval/full_suite_denoise.yaml --dry-run
+  configs/eval/full30_denoise.local.yaml --dry-run
 ```
 
-This evaluator dry run checks configuration and reports missing local inputs without contacting the service. Resolve every missing input before running. In contrast, `python3 run.py eval --dry-run` only previews the downstream command.
+This evaluator dry run checks configuration and reports `missing_inputs` without contacting the service. Inspect that field even when the command exits successfully. A missing model-weight directory is a separate setup issue from missing evaluation data; resolve both before inference. The data checker above provides deeper dataset validation. In contrast, `python3 run.py eval --dry-run` only previews the downstream command.
 
 Choose the command matching the running service:
 
 ```bash
 # GroundAnything: entropy-guided decoding
-python3 run.py eval --config configs/eval/full_suite_denoise.yaml
+python3 run.py eval --config configs/eval/full30_denoise.local.yaml --suite groundanything30
 
 # GroundAnything: self-speculative decoding
-python3 run.py eval --config configs/eval/full_suite_speculative.yaml
+python3 run.py eval --config configs/eval/full30_speculative.local.yaml --suite groundanything30
 
 # GroundAnything-VLM: autoregressive decoding
-python3 run.py eval --config configs/eval/full_suite_vlm.yaml
+python3 run.py eval --config configs/eval/full30_vlm.local.yaml --suite groundanything30
 ```
 
 These are alternative runs, not three commands to launch against one unchanged service. Apply the same evaluator `--dry-run` check to the selected configuration before each run.
@@ -203,6 +192,7 @@ The script reports **per-task results** and does not compute a paper-wide aggreg
 
 Task definitions live under `Grounding/`, `Dense/`, `Referring/`, `Pointing/`, `GUI/`, `OCR/`, `Layout/`, and `VisualPrompt/`. Shared parsers and data-location helpers are in `utils/`; detection metrics are in `metrics/`.
 
+- [Named suites](../configs/eval/suites.json)
 - [Task registry](../configs/eval/tasks.json)
 - [Evaluation launcher](../scripts/evaluate.py)
 - [Environment setup](../environments/README.md)
