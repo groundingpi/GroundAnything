@@ -1,5 +1,7 @@
 <h1 align="center"><img src="docs/assets/readme-title.svg" width="540" alt="GroundAnything" /></h1>
 
+<p align="center"><strong>English</strong> | <a href="README.zh-CN.md">简体中文</a></p>
+
 <h3 align="center">Reconciling Parallel Decoding with Precise Visual Grounding at Flash Speed</h3>
 
 <p align="center">
