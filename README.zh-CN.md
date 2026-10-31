@@ -476,14 +476,11 @@ GroundAnything/
 如果本工作对您的研究有所帮助，请引用：
 
 ```bibtex
-@misc{yu2026groundanythingreconcilingparalleldecoding,
-  title = {{GroundAnything}: Reconciling Parallel Decoding with Precise Visual Grounding at Flash Speed},
-  author = {Qize Yu and Lianrui Fan and Bowen Ping and Xini Ding and Zetian Song and Junbo Niu and Kaixuan Wang and Tianxing Chen and Yue Chen and Minghua He and Yuran Wang and Jie Huang and Haojun Zhang and Min Chen and Hao Li and Wenxuan Song and Ruihai Wu and Xianming Liu and Shilong Liu and Shuchang Zhou and Ping Luo and Shiyu Huang},
-  year = {2026},
-  eprint = {2609.39600},
-  archivePrefix = {arXiv},
-  primaryClass = {cs.CV},
-  url = {https://arxiv.org/abs/2609.39600},
+@article{yu2026groundanything,
+  title={GroundAnything: Reconciling Parallel Decoding with Precise Visual Grounding at Flash Speed},
+  author={Yu, Qize and Fan, Lianrui and Ping, Bowen and Ding, Xini and Song, Zetian and Niu, Junbo and Wang, Kaixuan and Chen, Tianxing and Chen, Yue and He, Minghua and others},
+  journal={arXiv preprint arXiv:2609.39600},
+  year={2026}
 }
 ```
 
